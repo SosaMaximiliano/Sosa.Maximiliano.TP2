@@ -47,6 +47,7 @@ namespace Entidades
             foreach (Dado dado in Sala.Dados)
             {
                 valorDados.Append($"{dado.ValorDeCara.ToString()},");
+                GuardarUnDado(dado);
             }
 
             return valorDados.ToString();
@@ -58,6 +59,14 @@ namespace Entidades
             if (Dados[posicion] is not null)
             {
                 Dados.Remove(dados[posicion]);
+            }
+        }
+
+        internal void GuardarUnDado(Dado dado)
+        {
+            if (dado is not null)
+            {
+                Dados.Add(dado);
             }
         }
 
@@ -83,13 +92,13 @@ namespace Entidades
         {
             Mezclar();
             Console.WriteLine(TirarDados());
-            QuitarUnDado();
+
         }
 
         public static bool JugadaEnPuerta(List<Dado> dados)
         {
-            bool flag2 = false;
-            bool flag3 = false;
+            bool dosDados = false;
+            bool tresDados = false;
             int[] cara = new int[6];
 
             foreach (Dado dado in dados)
@@ -123,21 +132,12 @@ namespace Entidades
             {
                 if (valor == 3)
                 {
-                    flag3 = true;
+                    tresDados = true;
                 }
-            }
-
-            foreach (int valor in cara)
-            {
-                if (valor == 2)
+                else if (valor == 2)
                 {
-                    flag2 = true;
+                    dosDados = true;
                 }
-            }
-
-            if (flag3 && flag2)
-            {
-                return true;
             }
 
             return false;
