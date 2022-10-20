@@ -16,3 +16,21 @@ G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Consola\obj\Debug\net6.0\refi
 G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Consola\obj\Debug\net6.0\Consola.pdb
 G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Consola\obj\Debug\net6.0\Consola.genruntimeconfig.cache
 G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Consola\obj\Debug\net6.0\ref\Consola.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Consola.exe
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Consola.deps.json
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Consola.runtimeconfig.json
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Consola.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Consola.pdb
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Entidades.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\bin\Debug\net6.0\Entidades.pdb
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.csproj.AssemblyReference.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.AssemblyInfoInputs.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.AssemblyInfo.cs
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.csproj.CoreCompileInputs.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.csproj.CopyComplete
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\refint\Consola.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.pdb
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\Consola.genruntimeconfig.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Consola\obj\Debug\net6.0\ref\Consola.dll

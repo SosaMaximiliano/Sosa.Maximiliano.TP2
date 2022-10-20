@@ -10,3 +10,15 @@ G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Entidades\obj\Debug\net6.0\En
 G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Entidades\obj\Debug\net6.0\refint\Entidades.dll
 G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Entidades\obj\Debug\net6.0\Entidades.pdb
 G:\Programacion II\Sosa.Maximiliano.SegundoParcial\Entidades\obj\Debug\net6.0\ref\Entidades.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\bin\Debug\net6.0\Entidades.deps.json
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\bin\Debug\net6.0\Entidades.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\bin\Debug\net6.0\Entidades.pdb
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfo.cs
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\refint\Entidades.dll
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.pdb
+C:\Users\maxis\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\ref\Entidades.dll

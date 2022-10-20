@@ -1,15 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Entidades;
 
-Cubilete cubilete = new Cubilete();
+Jugador jugador = new Jugador("Max", "Payne",1);
 
-Console.WriteLine(cubilete.TirarDados());
-cubilete.Mezclar();
-Console.WriteLine(cubilete.TirarDados());
-cubilete.Mezclar();
-Console.WriteLine(cubilete.TirarDados());
-cubilete.Mezclar();
-Console.WriteLine(cubilete.TirarDados());
-cubilete.Mezclar();
-Console.WriteLine(cubilete.TirarDados());
+jugador.JugarMano();
+jugador.JugarMano();
+jugador.JugarMano();
+jugador.JugarMano();
+jugador.JugarMano();
 
