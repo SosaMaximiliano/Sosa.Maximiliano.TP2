@@ -29,6 +29,7 @@ namespace Entidades
             puntaje = 0;
             partidasGanadas = 0;
             this.salaAsignada = salaAsignada;
+            dados = new List<Dado>();
         }
 
         internal void Mezclar()
@@ -66,7 +67,7 @@ namespace Entidades
         {
             if (dado is not null)
             {
-                Dados.Add(dado);
+                this.dados.Add(dado);
             }
         }
 
@@ -88,57 +89,35 @@ namespace Entidades
                 Puntaje += 50;
         }
 
+        public void CantarJuego(List<Dado> dados)
+        {
+            if (Reglas.EscaleraMayor(dados))
+                Console.WriteLine("Escalera Mayor");
+
+            if (Reglas.EscaleraMenor(dados))
+                Console.WriteLine("Escalera Menor");
+
+            if (Reglas.Full(dados))
+                Console.WriteLine("Full");
+
+            if (Reglas.Poker(dados))
+                Console.WriteLine("Poker");
+
+            if (Reglas.Generala(dados))
+                Console.WriteLine("Generala");
+        }
+
         public void JugarMano()
         {
             Mezclar();
             Console.WriteLine(TirarDados());
-
+            SumarPuntos(Dados);
+            CantarJuego(Dados);
+            Console.WriteLine(Puntaje);
         }
 
         public static bool JugadaEnPuerta(List<Dado> dados)
         {
-            bool dosDados = false;
-            bool tresDados = false;
-            int[] cara = new int[6];
-
-            foreach (Dado dado in dados)
-            {
-                switch (dado.ValorDeCara)
-                {
-                    case 1:
-                        cara[0]++;
-                        break;
-                    case 2:
-                        cara[1]++;
-                        break;
-                    case 3:
-                        cara[2]++;
-                        break;
-                    case 4:
-                        cara[3]++;
-                        break;
-                    case 5:
-                        cara[4]++;
-                        break;
-                    case 6:
-                        cara[5]++;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            foreach (int valor in cara)
-            {
-                if (valor == 3)
-                {
-                    tresDados = true;
-                }
-                else if (valor == 2)
-                {
-                    dosDados = true;
-                }
-            }
 
             return false;
         }

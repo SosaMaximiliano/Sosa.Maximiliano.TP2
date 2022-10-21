@@ -36,6 +36,7 @@ namespace Entidades
                 {
                     return false;
                 }
+                contadorAux++;
             }
 
             return true;
@@ -194,7 +195,7 @@ namespace Entidades
                 }
             }
 
-            if (contadorAux >= 5)
+            if (contadorAux == 5)
             {
                 return true;
             }

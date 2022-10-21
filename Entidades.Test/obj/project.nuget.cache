@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uXZ7HV5uK1tCuhkUz7RA6KUll66gqxM3JSGxmGtS2XFqsEsLqSya2FD0T5baUC8NhL48Z3eRxmLaNk5Y1tR+wg==",
+  "dgSpecHash": "7yCr3TFmMDzyBWbCe2pH2vGsHw67PWdZObFjInOR3RXKhgMOHO4IngQTRAxljI7GQpMsVS1KnhmkkzMrwiVoiQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
+  "projectFilePath": "G:\\Programacion II\\Sosa.Maximiliano.SegundoParcial\\Entidades.Test\\Entidades.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maxis\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\maxis\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

@@ -6,6 +6,5 @@ Jugador jugador = new Jugador("Max", "Payne",1);
 jugador.JugarMano();
 jugador.JugarMano();
 jugador.JugarMano();
-jugador.JugarMano();
-jugador.JugarMano();
+
 

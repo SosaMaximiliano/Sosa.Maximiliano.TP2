@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\Consola.csproj",
+      "projectUniqueName": "G:\\Programacion II\\Sosa.Maximiliano.SegundoParcial\\Consola\\Consola.csproj",
       "projectName": "Consola",
-      "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\Consola.csproj",
+      "projectPath": "G:\\Programacion II\\Sosa.Maximiliano.SegundoParcial\\Consola\\Consola.csproj",
       "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\obj\\",
+      "outputPath": "G:\\Programacion II\\Sosa.Maximiliano.SegundoParcial\\Consola\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
+            "G:\\Programacion II\\Sosa.Maximiliano.SegundoParcial\\Entidades\\Entidades.csproj": {
+              "projectPath": "G:\\Programacion II\\Sosa.Maximiliano.SegundoParcial\\Entidades\\Entidades.csproj"
             }
           }
         }
