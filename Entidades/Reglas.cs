@@ -8,38 +8,46 @@ namespace Entidades
 {
     public static class Reglas
     {
-
+       
         public static bool EscaleraMenor(List<Dado> dados)
         {
-            int contadorAux = 1;
+            int contadorAux = 0;
 
-            foreach (Dado dado in dados)
+            for (int i = 1; i < 6; i++)
             {
-                if (dado is null || dado.ValorDeCara != contadorAux)
+                foreach (Dado dado in dados)
                 {
-                    return false;
-                }
+                    if (dado is not null && dado.ValorDeCara == i)
+                    {
+                        contadorAux++;
+                        break;
+                    }
 
-                contadorAux++;
+                }
             }
 
-            return true;
+            return contadorAux == 5 ? true : false;
+
         }
 
         public static bool EscaleraMayor(List<Dado> dados)
         {
-            int contadorAux = 2;
+            int contadorAux = 0;
 
-            foreach (Dado dado in dados)
+            for (int i = 2; i <= 6; i++)
             {
-                if (dado is null || dado.ValorDeCara != contadorAux)
+                foreach (Dado dado in dados)
                 {
-                    return false;
+                    if (dado is not null && dado.ValorDeCara == i)
+                    {
+                        contadorAux++;
+                        break;
+                    }
+
                 }
-                contadorAux++;
             }
 
-            return true;
+            return contadorAux == 5 ? true : false;
         }
 
         public static bool Full(List<Dado> dados)
