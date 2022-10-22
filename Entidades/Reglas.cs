@@ -191,22 +191,10 @@ namespace Entidades
             return false;
         }
 
-        public static bool GeneralaReal(List<Dado> dados)
+
+        public static bool GeneralaServida()
         {
-            int contadorAux = 0;
 
-            foreach (Dado dado in dados)
-            {
-                if (dado.ValorDeCara == 1)
-                {
-                    contadorAux++;
-                }
-            }
-
-            if (contadorAux == 5)
-            {
-                return true;
-            }
 
             return false;
         }

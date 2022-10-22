@@ -13,13 +13,13 @@ namespace Entidades
         private static int puntaje;
         private static int partidasGanadas;
         private int salaAsignada;
-        private List<Dado> dados;
+        private List<Dado> dadosPrometedores;
 
         public string Nombre { get => nombre; }
         public string Apellido { get => apellido; }
         public static int Puntaje { get => puntaje; set => puntaje = value; }
         public static int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
-        public List<Dado> Dados { get => dados; set => dados = value; }
+        public List<Dado> DadosPrometedores { get => dadosPrometedores; set => dadosPrometedores = value; }
 
 
         public Jugador(string nombre, string apellido, int salaAsignada)
@@ -29,7 +29,7 @@ namespace Entidades
             puntaje = 0;
             partidasGanadas = 0;
             this.salaAsignada = salaAsignada;
-            dados = new List<Dado>();
+            dadosPrometedores = new List<Dado>();
         }
 
         internal void Mezclar()
@@ -57,9 +57,9 @@ namespace Entidades
 
         internal void QuitarUnDado(int posicion)
         {
-            if (Dados[posicion] is not null)
+            if (DadosPrometedores[posicion] is not null)
             {
-                Dados.Remove(dados[posicion]);
+                DadosPrometedores.Remove(DadosPrometedores[posicion]);
             }
         }
 
@@ -67,7 +67,7 @@ namespace Entidades
         {
             if (dado is not null)
             {
-                this.dados.Add(dado);
+                this.dadosPrometedores.Add(dado);
             }
         }
 
@@ -89,31 +89,37 @@ namespace Entidades
                 Puntaje += 50;
         }
 
-        public void CantarJuego(List<Dado> dados)
+        public string CantarJuego(List<Dado> dados)
         {
             if (Reglas.EscaleraMayor(dados))
-                Console.WriteLine("Escalera Mayor");
+                return "Escalera Mayor";
 
             if (Reglas.EscaleraMenor(dados))
-                Console.WriteLine("Escalera Menor");
+                return "Escalera Menor";
 
             if (Reglas.Full(dados))
-                Console.WriteLine("Full");
+                return "Full";
 
             if (Reglas.Poker(dados))
-                Console.WriteLine("Poker");
+                return "Poker";
 
             if (Reglas.Generala(dados))
-                Console.WriteLine("Generala");
+                return "Generala";
+
+
+            return "No hay juego";
         }
 
         public void JugarMano()
         {
             Mezclar();
             Console.WriteLine(TirarDados());
-            SumarPuntos(Dados);
-            CantarJuego(Dados);
+            SumarPuntos(Sala.Dados);
+            Console.WriteLine(CantarJuego(Sala.Dados));
             Console.WriteLine(Puntaje);
+            //LIMPIAR LISTA DADOS SALA
+            Sala.Dados.Clear();
+            //AGREGAR DADOS BUENOS A LA LISTA DADOS SALA
         }
 
         public static bool JugadaEnPuerta(List<Dado> dados)
