@@ -8,7 +8,7 @@ namespace Entidades
 {
     public static class Reglas
     {
-       
+
         public static bool EscaleraMenor(List<Dado> dados)
         {
             int contadorAux = 0;
@@ -191,10 +191,14 @@ namespace Entidades
             return false;
         }
 
-
-        public static bool GeneralaServida()
+        public static bool GeneralaServida(List<Dado> dados)
         {
+            if (Sala.mano == 1)
 
+                if (Generala(dados))
+                {
+                    return true;
+                }
 
             return false;
         }

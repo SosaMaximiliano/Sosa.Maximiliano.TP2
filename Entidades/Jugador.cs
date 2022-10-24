@@ -48,28 +48,12 @@ namespace Entidades
             foreach (Dado dado in Sala.Dados)
             {
                 valorDados.Append($"{dado.ValorDeCara.ToString()},");
-                GuardarUnDado(dado);
+                DadosPrometedores.Add(dado);
             }
 
             return valorDados.ToString();
         }
 
-
-        internal void QuitarUnDado(int posicion)
-        {
-            if (DadosPrometedores[posicion] is not null)
-            {
-                DadosPrometedores.Remove(DadosPrometedores[posicion]);
-            }
-        }
-
-        internal void GuardarUnDado(Dado dado)
-        {
-            if (dado is not null)
-            {
-                this.dadosPrometedores.Add(dado);
-            }
-        }
 
         public void SumarPuntos(List<Dado> dados)
         {
@@ -112,25 +96,153 @@ namespace Entidades
 
         public void JugarMano()
         {
+            Sala.mano++;
+
             Mezclar();
             Console.WriteLine(TirarDados());
             SumarPuntos(Sala.Dados);
-            Console.WriteLine(CantarJuego(Sala.Dados));
-            Console.WriteLine(Puntaje);
-            //LIMPIAR LISTA DADOS SALA
-            Sala.Dados.Clear();
-            //AGREGAR DADOS BUENOS A LA LISTA DADOS SALA
+            Console.WriteLine($"{CantarJuego(Sala.Dados)}: {Puntaje} puntos.");
+
+            if (PosibleFull(Sala.Dados))
+            {
+                DadosPrometedores = ListarDadosUtiles(Sala.Dados);
+                Sala.Dados.Clear();
+                for (int i = 0; i < 5 - DadosPrometedores.Count; i++)
+                {
+                    Sala.Dados.Add(new Dado());
+                }
+            }
+
+            
+
         }
 
-        public static bool JugadaEnPuerta(List<Dado> dados)
+        public static List<Dado> ListarDadosUtiles(List<Dado> dados)
         {
+            if (!Reglas.Full(dados))
+            {
+                Dado dadoAux;
+                List<Dado> listaAux = new List<Dado>();
+                int[] carasDelDado = new int[6];
+
+                foreach (Dado dado in dados)
+                {
+                    switch (dado.ValorDeCara)
+                    {
+                        case 1:
+                            carasDelDado[0]++;
+                            break;
+                        case 2:
+                            carasDelDado[1]++;
+                            break;
+                        case 3:
+                            carasDelDado[2]++;
+                            break;
+                        case 4:
+                            carasDelDado[3]++;
+                            break;
+                        case 5:
+                            carasDelDado[4]++;
+                            break;
+                        case 6:
+                            carasDelDado[5]++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                //RECORRER EL ARRAY
+
+                for (int i = 0; i < carasDelDado.Length; i++)
+                {
+                    if (carasDelDado[i] == 2)
+                    {
+                        dadoAux = new Dado();
+                        dadoAux.ValorDeCara = i + 1;
+                        listaAux.Add(dadoAux);
+                        listaAux.Add(dadoAux);
+                    }
+
+                    if (carasDelDado[i] == 3)
+                    {
+                        dadoAux = new Dado();
+                        dadoAux.ValorDeCara = i + 1;
+                        listaAux.Add(dadoAux);
+                        listaAux.Add(dadoAux);
+                        listaAux.Add(dadoAux);
+                    }
+
+                }
+                return listaAux;
+            }
+
+            return dados;
+        }
+
+        public static bool PosibleFull(List<Dado> dados)
+        {
+            if (!Reglas.Full(dados))
+            {
+                int[] carasDelDado = new int[6];
+
+                foreach (Dado dado in dados)
+                {
+                    switch (dado.ValorDeCara)
+                    {
+                        case 1:
+                            carasDelDado[0]++;
+                            break;
+                        case 2:
+                            carasDelDado[1]++;
+                            break;
+                        case 3:
+                            carasDelDado[2]++;
+                            break;
+                        case 4:
+                            carasDelDado[3]++;
+                            break;
+                        case 5:
+                            carasDelDado[4]++;
+                            break;
+                        case 6:
+                            carasDelDado[5]++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+
+                for (int i = 0; i < carasDelDado.Length; i++)
+                {
+                    if (carasDelDado[i] == 2 || carasDelDado[i] == 3)
+                    {
+                        return true;
+                    }
+                }
+
+
+            }
 
             return false;
         }
 
+        //REVISAR
+        //SE ROMPE PORQUE MODIFICA LA LISTA EN TIEMPO DE EJECUCION
+        /*public void AgregarDadoUtil(List<Dado> dados)
+        {
+            foreach (Dado dado in dados)
+            {
+                foreach (Dado dadoJugador in this.DadosPrometedores)
+                {
+                    if (dado.ValorDeCara == dadoJugador.ValorDeCara)
+                    {
+                        DadosPrometedores.Add(dado);
+                    }
+                }
+            }
+        }*/
 
-        //EL JUGADOR DEBE TENER UNA LISTA DE DADOS
-        //DONDE SE GUARDEN LOS QUE LE SIRVEN PARA
-        //ARMAR JUEGO
     }
 }
