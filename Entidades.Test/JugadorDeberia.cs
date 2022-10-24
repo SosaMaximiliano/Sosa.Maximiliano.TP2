@@ -65,7 +65,7 @@ namespace Entidades.Test
             resultadoEsperado3[1].ValorDeCara = 3;
 
             //W
-            dados = Jugador.ListarDadosUtiles(dados);
+            dados = Jugador.GuardarDadosUtiles(dados);
             //T
             for (int i = 0; i< dados.Count; i++)
             {
@@ -97,7 +97,13 @@ namespace Entidades.Test
             dados[3].ValorDeCara = dado4;
             dados[4].ValorDeCara = dado5;
 
-            Assert.AreEqual(true, Jugador.PosibleFull(dados));
+            Assert.AreEqual(true, Jugador.PosibleFullPokerGenerala(dados));
+        }
+
+        public void ValidarPosibleEscalera()
+        {
+            throw new NotImplementedException();
+
         }
 
     }

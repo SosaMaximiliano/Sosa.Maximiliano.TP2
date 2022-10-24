@@ -14,13 +14,16 @@ namespace Entidades
         private static int partidasGanadas;
         private int salaAsignada;
         private List<Dado> dadosPrometedores;
+        private List<Dado> posibleEscalera;
+        private List<Dado> posibleFullPokerGenerala;
 
         public string Nombre { get => nombre; }
         public string Apellido { get => apellido; }
         public static int Puntaje { get => puntaje; set => puntaje = value; }
         public static int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
         public List<Dado> DadosPrometedores { get => dadosPrometedores; set => dadosPrometedores = value; }
-
+        public List<Dado> PosibleEscalera1 { get => posibleEscalera; set => posibleEscalera = value; }
+        public List<Dado> PosibleFullPokerGenerala1 { get => posibleFullPokerGenerala; set => posibleFullPokerGenerala = value; }
 
         public Jugador(string nombre, string apellido, int salaAsignada)
         {
@@ -32,23 +35,22 @@ namespace Entidades
             dadosPrometedores = new List<Dado>();
         }
 
-        internal void Mezclar()
+        internal void Mezclar(List<Dado> dados)
         {
-            foreach (Dado dado in Sala.Dados)
+            foreach (Dado dado in dados)
             {
                 Random rand = new Random();
                 dado.ValorDeCara = rand.Next(1, 7);
             }
         }
 
-        internal string TirarDados()
+        internal string TirarDados(List<Dado> dados)
         {
             StringBuilder valorDados = new StringBuilder();
 
-            foreach (Dado dado in Sala.Dados)
+            foreach (Dado dado in dados)
             {
-                valorDados.Append($"{dado.ValorDeCara.ToString()},");
-                DadosPrometedores.Add(dado);
+                valorDados.Append($"{dado.ValorDeCara.ToString()} ");
             }
 
             return valorDados.ToString();
@@ -76,48 +78,67 @@ namespace Entidades
         public string CantarJuego(List<Dado> dados)
         {
             if (Reglas.EscaleraMayor(dados))
-                return "Escalera Mayor";
+                return "Escalera Mayor +20".ToUpper();
 
             if (Reglas.EscaleraMenor(dados))
-                return "Escalera Menor";
+                return "Escalera Menor +20".ToUpper();
 
             if (Reglas.Full(dados))
-                return "Full";
+                return "Full +30".ToUpper();
 
             if (Reglas.Poker(dados))
-                return "Poker";
+                return "Poker +40".ToUpper();
 
             if (Reglas.Generala(dados))
-                return "Generala";
+                return "Generala +50".ToUpper();
 
 
-            return "No hay juego";
+            return "No hay juego".ToUpper();
+
+        }
+
+        public string MostrarDadosGuardados(List<Dado> dadosJugador)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Dado dado in dadosJugador)
+            {
+                if (dado is not null)
+                {
+                    sb.Append($"{dado.ValorDeCara} ");
+                }
+            }
+            return $"Dados guardados: {sb.ToString()}".ToUpper();
         }
 
         public void JugarMano()
         {
             Sala.mano++;
 
-            Mezclar();
-            Console.WriteLine(TirarDados());
+
+            //1- MEZCLAR
+            Mezclar(Sala.Dados);
+            //2- TIRAR / MOSTRAR DADOS
+            Console.WriteLine($"DADOS JUGADOS: {TirarDados(Sala.Dados)}");
+            //3- REVISAR JUEGOS SERVIDOS O POSIBLES
+
+            //4- CANTAR JUEGOS
+            Console.WriteLine(CantarJuego(Sala.Dados));
+            //5- SUMAR PUNTOS
             SumarPuntos(Sala.Dados);
-            Console.WriteLine($"{CantarJuego(Sala.Dados)}: {Puntaje} puntos.");
+            Console.WriteLine($"PUNTAJE: {Puntaje}");
+            //5- GUARDAR DADOS
 
-            if (PosibleFull(Sala.Dados))
-            {
-                DadosPrometedores = ListarDadosUtiles(Sala.Dados);
-                Sala.Dados.Clear();
-                for (int i = 0; i < 5 - DadosPrometedores.Count; i++)
-                {
-                    Sala.Dados.Add(new Dado());
-                }
-            }
+            MediaEscalera(Sala.Dados);
 
-            
+
+
 
         }
 
-        public static List<Dado> ListarDadosUtiles(List<Dado> dados)
+
+        //CUANDO SE TIRAN LOS CINCO DADOS
+        public static List<Dado> GuardarDadosUtiles(List<Dado> dados)
         {
             if (!Reglas.Full(dados))
             {
@@ -152,8 +173,6 @@ namespace Entidades
                     }
                 }
 
-                //RECORRER EL ARRAY
-
                 for (int i = 0; i < carasDelDado.Length; i++)
                 {
                     if (carasDelDado[i] == 2)
@@ -180,7 +199,7 @@ namespace Entidades
             return dados;
         }
 
-        public static bool PosibleFull(List<Dado> dados)
+        public static bool PosibleFullPokerGenerala(List<Dado> dados)
         {
             if (!Reglas.Full(dados))
             {
@@ -228,6 +247,63 @@ namespace Entidades
             return false;
         }
 
+        //HACER METODO GUARDAR UN DADO UTIL
+
+
+
+        public static bool PosibleEscalera(List<Dado> dados)
+        {
+            int contadorAux = 0;
+
+            for (int i = 1; i < 6; i++)
+            {
+                foreach (Dado dado in dados)
+                {
+                    if (dado is not null && dado.ValorDeCara == i)
+                    {
+                        contadorAux++;
+                        break;
+                    }
+
+                }
+            }
+
+            return contadorAux == 3 ? true : false;
+        }
+
+        public void MediaEscalera(List<Dado> dados)
+        {
+            List<int> valoresAux = new List<int>();
+            int contadorAux = 1;
+
+            //RECORRER LA LISTA / CREAR LISTA AUXILIAR CON LOS VALORES
+            foreach (Dado dado in dados)
+            {
+                valoresAux.Add(dado.ValorDeCara);
+            }
+
+            //ORDENAR LA LISTA AUXILIAR
+            valoresAux.Sort();
+
+            //COMPARAR SI HAY CORRELATIVOS (AL MENOS 3)
+            for (int i = 0; i < valoresAux.Count - 1; i++)
+            {
+                for (int j = i + 1; j < valoresAux.Count; j++)
+                {
+                    if (valoresAux[j] == valoresAux[i] + 1)
+                    {
+                        Console.WriteLine(valoresAux[j]);
+                        valoresAux[j] = valoresAux[i] + 1;
+                        contadorAux++;
+
+                    }
+                }
+            }
+
+            //valoresAux.Clear();
+;
+        }
+
         //REVISAR
         //SE ROMPE PORQUE MODIFICA LA LISTA EN TIEMPO DE EJECUCION
         /*public void AgregarDadoUtil(List<Dado> dados)
@@ -246,3 +322,5 @@ namespace Entidades
 
     }
 }
+
+//HAY QUE REVISAR TODOS LOS METODOS DEL JUGADOR
