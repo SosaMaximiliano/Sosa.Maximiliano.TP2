@@ -118,18 +118,22 @@ namespace Entidades
 
             //1- MEZCLAR
             Mezclar(Sala.Dados);
+
             //2- TIRAR / MOSTRAR DADOS
             Console.WriteLine($"DADOS JUGADOS: {TirarDados(Sala.Dados)}");
+
             //3- REVISAR JUEGOS SERVIDOS O POSIBLES
 
             //4- CANTAR JUEGOS
             Console.WriteLine(CantarJuego(Sala.Dados));
+
             //5- SUMAR PUNTOS
             SumarPuntos(Sala.Dados);
             Console.WriteLine($"PUNTAJE: {Puntaje}");
+
             //5- GUARDAR DADOS
 
-            MediaEscalera(Sala.Dados);
+            
 
 
 
@@ -137,8 +141,9 @@ namespace Entidades
         }
 
 
-        //CUANDO SE TIRAN LOS CINCO DADOS
-        public static List<Dado> GuardarDadosUtiles(List<Dado> dados)
+        //SI CUANDO SE TIRAN LOS CINCO DADOS ALGUNO SE REPITE DOS O TRES VECES LO GUARDA
+        //SI NO DEVUELVE LA LISTA COMO ESTÁ
+        public static List<Dado> RetornarDadosUtiles(List<Dado> dados)
         {
             if (!Reglas.Full(dados))
             {
@@ -199,6 +204,7 @@ namespace Entidades
             return dados;
         }
 
+        //BOOL SI ALGUN DADO SE REPITE DOS O TRES VECES
         public static bool PosibleFullPokerGenerala(List<Dado> dados)
         {
             if (!Reglas.Full(dados))
@@ -255,7 +261,7 @@ namespace Entidades
         {
             int contadorAux = 0;
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i <= 6; i++)
             {
                 foreach (Dado dado in dados)
                 {
@@ -268,7 +274,7 @@ namespace Entidades
                 }
             }
 
-            return contadorAux == 3 ? true : false;
+            return contadorAux >= 3 ? true : false;
         }
 
         public void MediaEscalera(List<Dado> dados)

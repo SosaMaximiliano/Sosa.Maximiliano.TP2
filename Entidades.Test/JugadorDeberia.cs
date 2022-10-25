@@ -65,7 +65,7 @@ namespace Entidades.Test
             resultadoEsperado3[1].ValorDeCara = 3;
 
             //W
-            dados = Jugador.GuardarDadosUtiles(dados);
+            dados = Jugador.RetornarDadosUtiles(dados);
             //T
             for (int i = 0; i< dados.Count; i++)
             {
@@ -83,8 +83,9 @@ namespace Entidades.Test
 
         [DataRow(5,5,5,1,3)]
         [DataRow(4,5,5,1,3)]
+        [DataRow(4,5,6,1,5)]
         [TestMethod]
-        public void ValidarPosibleFull(int dado1, int dado2, int dado3, int dado4, int dado5)
+        public void ValidarPosibleFullPokerGenerala(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
             List<Dado> dados = new List<Dado>();
             for (int i = 0; i < 5; i++)
@@ -100,10 +101,25 @@ namespace Entidades.Test
             Assert.AreEqual(true, Jugador.PosibleFullPokerGenerala(dados));
         }
 
-        public void ValidarPosibleEscalera()
+        [DataRow(1,2,3,6,6)]
+        [DataRow(1,6,3,6,2)]
+        [DataRow(4,5,6,1,1)]
+        [DataRow(4,3,2,1,1)]
+        [TestMethod]
+        public void ValidarPosibleEscalera(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
-            throw new NotImplementedException();
+            List<Dado> dados = new List<Dado>();
+            for (int i = 0; i < 5; i++)
+            {
+                dados.Add(new Dado());
+            }
+            dados[0].ValorDeCara = dado1;
+            dados[1].ValorDeCara = dado2;
+            dados[2].ValorDeCara = dado3;
+            dados[3].ValorDeCara = dado4;
+            dados[4].ValorDeCara = dado5;
 
+            Assert.AreEqual(true,Jugador.PosibleEscalera(dados));
         }
 
     }
