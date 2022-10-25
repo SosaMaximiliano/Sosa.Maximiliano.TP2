@@ -56,7 +56,6 @@ namespace Entidades
             return valorDados.ToString();
         }
 
-
         public void SumarPuntos(List<Dado> dados)
         {
             if (Reglas.EscaleraMayor(dados))
@@ -124,6 +123,15 @@ namespace Entidades
 
             //3- REVISAR JUEGOS SERVIDOS O POSIBLES
 
+            if (PosibleFullPokerGenerala(Sala.Dados))
+            {
+                Console.WriteLine("Posible Full, Poker o Generala");
+            }
+            if (PosibleEscalera(Sala.Dados))
+            {
+                Console.WriteLine("Posible Escalera");
+            }
+
             //4- CANTAR JUEGOS
             Console.WriteLine(CantarJuego(Sala.Dados));
 
@@ -131,7 +139,7 @@ namespace Entidades
             SumarPuntos(Sala.Dados);
             Console.WriteLine($"PUNTAJE: {Puntaje}");
 
-            //5- GUARDAR DADOS
+            //5- GUARDAR DADOS UTILES
 
             
 
@@ -145,7 +153,7 @@ namespace Entidades
         //SI NO DEVUELVE LA LISTA COMO ESTÁ
         public static List<Dado> RetornarDadosUtiles(List<Dado> dados)
         {
-            if (!Reglas.Full(dados))
+            if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados)))
             {
                 Dado dadoAux;
                 List<Dado> listaAux = new List<Dado>();
@@ -207,7 +215,7 @@ namespace Entidades
         //BOOL SI ALGUN DADO SE REPITE DOS O TRES VECES
         public static bool PosibleFullPokerGenerala(List<Dado> dados)
         {
-            if (!Reglas.Full(dados))
+            if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados)))
             {
                 int[] carasDelDado = new int[6];
 
@@ -252,11 +260,7 @@ namespace Entidades
 
             return false;
         }
-
-        //HACER METODO GUARDAR UN DADO UTIL
-
-
-
+        
         public static bool PosibleEscalera(List<Dado> dados)
         {
             int contadorAux = 0;
@@ -274,40 +278,23 @@ namespace Entidades
                 }
             }
 
-            return contadorAux >= 3 ? true : false;
+            return contadorAux >= 2 ? true : false;
         }
 
-        public void MediaEscalera(List<Dado> dados)
+        //HACER METODO GUARDAR UN DADO UTIL
+        public static bool EsUnDadoUtil()
         {
-            List<int> valoresAux = new List<int>();
-            int contadorAux = 1;
+            throw new NotImplementedException();
+        }
 
-            //RECORRER LA LISTA / CREAR LISTA AUXILIAR CON LOS VALORES
-            foreach (Dado dado in dados)
-            {
-                valoresAux.Add(dado.ValorDeCara);
-            }
+        public void GuardarPosiblePokerFullGenerala()
+        {
+            throw new NotImplementedException();
+        }
 
-            //ORDENAR LA LISTA AUXILIAR
-            valoresAux.Sort();
-
-            //COMPARAR SI HAY CORRELATIVOS (AL MENOS 3)
-            for (int i = 0; i < valoresAux.Count - 1; i++)
-            {
-                for (int j = i + 1; j < valoresAux.Count; j++)
-                {
-                    if (valoresAux[j] == valoresAux[i] + 1)
-                    {
-                        Console.WriteLine(valoresAux[j]);
-                        valoresAux[j] = valoresAux[i] + 1;
-                        contadorAux++;
-
-                    }
-                }
-            }
-
-            //valoresAux.Clear();
-;
+        public void GuardarPosibleEscalera()
+        {
+            throw new NotImplementedException();
         }
 
         //REVISAR
