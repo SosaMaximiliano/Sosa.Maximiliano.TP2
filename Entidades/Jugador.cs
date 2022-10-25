@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -141,7 +142,7 @@ namespace Entidades
 
             //5- GUARDAR DADOS UTILES
 
-            
+
 
 
 
@@ -260,7 +261,7 @@ namespace Entidades
 
             return false;
         }
-        
+
         public static bool PosibleEscalera(List<Dado> dados)
         {
             int contadorAux = 0;
@@ -282,17 +283,25 @@ namespace Entidades
         }
 
         //HACER METODO GUARDAR UN DADO UTIL
-        public static bool EsUnDadoUtil()
+        public static bool EsUnDadoUtil(List<Dado> dados)
         {
+            /*
+             * Recorro la lista de los dados jugados.
+             * Tengo un array con los valores que se repiten dos o tres veces.
+             * Si un dado jugado completa un juego lo guardo
+             */
+
             throw new NotImplementedException();
         }
 
-        public void GuardarPosiblePokerFullGenerala()
+        public void GuardarPosiblePokerFullGenerala(List<Dado> dados)
         {
+
+
             throw new NotImplementedException();
         }
 
-        public void GuardarPosibleEscalera()
+        public void GuardarPosibleEscalera(List<Dado> dados)
         {
             throw new NotImplementedException();
         }
