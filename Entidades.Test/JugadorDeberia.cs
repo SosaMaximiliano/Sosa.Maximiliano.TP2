@@ -11,13 +11,17 @@ namespace Entidades.Test
     [TestClass]
     public class JugadorDeberia
     {
-        [DataRow(3, 4, 1, 3, 1)]
-        [DataRow(1, 3, 5, 3, 3)]
-        [DataRow(1, 4, 5, 5, 3)]
+
+        [DataRow(1, 5, 5, 1, 1)] //RECIBE 3 y 2
+        [DataRow(1, 5, 5, 4, 1)] //RECIBE 2 y 2
+        [DataRow(1, 3, 5, 1, 1)] //RECIBE 3
+        [DataRow(1, 3, 5, 2, 1)] //RECIBE 2
+        [DataRow(1, 5, 5)]
+        [DataRow(4, 4, 4)]
+        [DataRow(3, 3)]
         [TestMethod]
-        public void ValidarPosibleJugada(int dado1, int dado2, int dado3, int dado4, int dado5)
+        public void PoderGuardarDadosParaFullPokerGenerala(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
-            bool flag = false;
             //G
             List<Dado> dados = new List<Dado>();
             for (int i = 0; i < 5; i++)
@@ -30,60 +34,20 @@ namespace Entidades.Test
             dados[3].ValorDeCara = dado4;
             dados[4].ValorDeCara = dado5;
 
-            //RESULTADO ESPERADO: UNA LISTA CON VALOR DE DADOS 1 1 3 3
-
-            List<Dado> resultadoEsperado = new List<Dado>();
-            for (int i = 0; i < 4; i++)
-            {
-                resultadoEsperado.Add(new Dado());
-            }
-            resultadoEsperado[0].ValorDeCara = 1;
-            resultadoEsperado[1].ValorDeCara = 1;
-            resultadoEsperado[2].ValorDeCara = 3;
-            resultadoEsperado[3].ValorDeCara = 3;
-
-            //OTROS RESULTADOS ESPERADOS:
-            //UNA LISTA CON DOS DADOS
-
-            List<Dado> resultadoEsperado2 = new List<Dado>();
-            for (int i = 0; i < 2; i++)
-            {
-                resultadoEsperado2.Add(new Dado());
-            }
-            resultadoEsperado2[0].ValorDeCara = 5;
-            resultadoEsperado2[1].ValorDeCara = 5;
-
-            //UNA LISTA CON TRES DADOS
-
-            List<Dado> resultadoEsperado3 = new List<Dado>();
-            for (int i = 0; i < 3; i++)
-            {
-                resultadoEsperado3.Add(new Dado());
-            }
-            resultadoEsperado3[0].ValorDeCara = 3;
-            resultadoEsperado3[1].ValorDeCara = 3;
-            resultadoEsperado3[1].ValorDeCara = 3;
+            Jugador jugador = new Jugador("Max", "Payne", 1);
 
             //W
-            dados = Jugador.RetornarDadosUtiles(dados);
+            jugador.GuardarDadosParaFullPokerGenerala(dados);
+
             //T
-            for (int i = 0; i< dados.Count; i++)
-            {
-                if (dados[i].ValorDeCara != resultadoEsperado[i].ValorDeCara && dados[i].ValorDeCara != resultadoEsperado2[i].ValorDeCara && dados[i].ValorDeCara != resultadoEsperado3[i].ValorDeCara)
-                {
-                    flag = false;
-                    break;
-                }
-                flag = true;
-            }
-                
-            Assert.IsTrue(flag);
+
+            Assert.AreEqual(dados.Count, jugador.DadosParaFullPokerGenerala.Count);
         }
 
 
-        [DataRow(5,5,5,1,3)]
-        [DataRow(4,5,5,1,3)]
-        [DataRow(4,5,6,1,5)]
+        [DataRow(5, 5, 5, 1, 3)]
+        [DataRow(4, 5, 5, 1, 3)]
+        [DataRow(4, 5, 6, 1, 5)]
         [TestMethod]
         public void ValidarPosibleFullPokerGenerala(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
@@ -101,10 +65,10 @@ namespace Entidades.Test
             Assert.AreEqual(true, Jugador.PosibleFullPokerGenerala(dados));
         }
 
-        [DataRow(1,2,3,6,6)]
-        [DataRow(1,6,3,6,2)]
-        [DataRow(4,5,6,1,1)]
-        [DataRow(4,3,2,1,1)]
+        [DataRow(1, 2, 3, 6, 6)]
+        [DataRow(1, 6, 3, 6, 2)]
+        [DataRow(4, 5, 6, 1, 1)]
+        [DataRow(4, 3, 2, 1, 1)]
         [TestMethod]
         public void ValidarPosibleEscalera(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
@@ -119,7 +83,7 @@ namespace Entidades.Test
             dados[3].ValorDeCara = dado4;
             dados[4].ValorDeCara = dado5;
 
-            Assert.AreEqual(true,Jugador.PosibleEscalera(dados));
+            Assert.AreEqual(true, Jugador.PosibleEscalera(dados));
         }
 
     }

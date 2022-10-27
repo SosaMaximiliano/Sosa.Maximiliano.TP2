@@ -15,16 +15,16 @@ namespace Entidades
         private static int partidasGanadas;
         private int salaAsignada;
         private List<Dado> dadosPrometedores;
-        private List<Dado> posibleEscalera;
-        private List<Dado> posibleFullPokerGenerala;
+        private List<Dado> dadosParaEscalera;
+        private List<Dado> dadosParaFullPokerGenerala;
 
         public string Nombre { get => nombre; }
         public string Apellido { get => apellido; }
         public static int Puntaje { get => puntaje; set => puntaje = value; }
         public static int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
         public List<Dado> DadosPrometedores { get => dadosPrometedores; set => dadosPrometedores = value; }
-        public List<Dado> PosibleEscalera1 { get => posibleEscalera; set => posibleEscalera = value; }
-        public List<Dado> PosibleFullPokerGenerala1 { get => posibleFullPokerGenerala; set => posibleFullPokerGenerala = value; }
+        public List<Dado> DadosParaEscalera { get => dadosParaEscalera; set => dadosParaEscalera = value; }
+        public List<Dado> DadosParaFullPokerGenerala { get => dadosParaFullPokerGenerala; set => dadosParaFullPokerGenerala = value; }
 
         public Jugador(string nombre, string apellido, int salaAsignada)
         {
@@ -33,7 +33,9 @@ namespace Entidades
             puntaje = 0;
             partidasGanadas = 0;
             this.salaAsignada = salaAsignada;
-            dadosPrometedores = new List<Dado>();
+            DadosPrometedores = new List<Dado>();
+            DadosParaFullPokerGenerala = new List<Dado>();
+            DadosParaEscalera = new List<Dado>();
         }
 
         internal void Mezclar(List<Dado> dados)
@@ -47,12 +49,15 @@ namespace Entidades
 
         internal string TirarDados(List<Dado> dados)
         {
+            List<Dado> ordenados = dados.OrderBy(dado => dado.ValorDeCara).ToList();
+
             StringBuilder valorDados = new StringBuilder();
 
-            foreach (Dado dado in dados)
+            foreach (Dado dado in ordenados)
             {
                 valorDados.Append($"{dado.ValorDeCara.ToString()} ");
             }
+
 
             return valorDados.ToString();
         }
@@ -111,7 +116,7 @@ namespace Entidades
             return $"Dados guardados: {sb.ToString()}".ToUpper();
         }
 
-        public void JugarMano()
+        public void JugarMano() //ESTE PUEDE SER UN DELEGADO QUE LLAME A LOS METODOS
         {
             Sala.mano++;
 
@@ -123,6 +128,8 @@ namespace Entidades
             Console.WriteLine($"DADOS JUGADOS: {TirarDados(Sala.Dados)}");
 
             //3- REVISAR JUEGOS SERVIDOS O POSIBLES
+            //SI HAY POSIBLE ESCALERA Y POSIBLE OTROS PRIORIZAR LOS OTROS Y VOLVER A JUGAR LA ESCALERA
+
 
             if (PosibleFullPokerGenerala(Sala.Dados))
             {
@@ -152,38 +159,41 @@ namespace Entidades
 
         //SI CUANDO SE TIRAN LOS CINCO DADOS ALGUNO SE REPITE DOS O TRES VECES LO GUARDA
         //SI NO DEVUELVE LA LISTA COMO ESTÁ
-        public static List<Dado> RetornarDadosUtiles(List<Dado> dados)
+        public void GuardarDadosParaFullPokerGenerala(List<Dado> dados)
         {
             if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados)))
             {
                 Dado dadoAux;
-                List<Dado> listaAux = new List<Dado>();
                 int[] carasDelDado = new int[6];
 
                 foreach (Dado dado in dados)
                 {
-                    switch (dado.ValorDeCara)
+                    if (dado is not null && dado.ValorDeCara > 0)
                     {
-                        case 1:
-                            carasDelDado[0]++;
-                            break;
-                        case 2:
-                            carasDelDado[1]++;
-                            break;
-                        case 3:
-                            carasDelDado[2]++;
-                            break;
-                        case 4:
-                            carasDelDado[3]++;
-                            break;
-                        case 5:
-                            carasDelDado[4]++;
-                            break;
-                        case 6:
-                            carasDelDado[5]++;
-                            break;
-                        default:
-                            break;
+                        switch (dado.ValorDeCara)
+                        {
+                            case 1:
+                                carasDelDado[0]++;
+                                break;
+                            case 2:
+                                carasDelDado[1]++;
+                                break;
+                            case 3:
+                                carasDelDado[2]++;
+                                break;
+                            case 4:
+                                carasDelDado[3]++;
+                                break;
+                            case 5:
+                                carasDelDado[4]++;
+                                break;
+                            case 6:
+                                carasDelDado[5]++;
+                                break;
+                            default:
+                                break;
+                        }
+
                     }
                 }
 
@@ -193,24 +203,24 @@ namespace Entidades
                     {
                         dadoAux = new Dado();
                         dadoAux.ValorDeCara = i + 1;
-                        listaAux.Add(dadoAux);
-                        listaAux.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(dadoAux);
                     }
 
                     if (carasDelDado[i] == 3)
                     {
                         dadoAux = new Dado();
                         dadoAux.ValorDeCara = i + 1;
-                        listaAux.Add(dadoAux);
-                        listaAux.Add(dadoAux);
-                        listaAux.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(dadoAux);
                     }
 
                 }
-                return listaAux;
+
+                //SI ES UN SOLO DADO QUE SIRVE GUARDARLO
             }
 
-            return dados;
         }
 
         //BOOL SI ALGUN DADO SE REPITE DOS O TRES VECES
@@ -264,22 +274,26 @@ namespace Entidades
 
         public static bool PosibleEscalera(List<Dado> dados)
         {
-            int contadorAux = 0;
+            int contadorAux = 1;
+            List<Dado> ordenados = dados.OrderBy(dado => dado.ValorDeCara).ToList();
 
-            for (int i = 1; i <= 6; i++)
+            for (int i = 0; i < ordenados.Count - 1; i++)
             {
-                foreach (Dado dado in dados)
+                if (ordenados[i + 1].ValorDeCara == ordenados[i].ValorDeCara)
                 {
-                    if (dado is not null && dado.ValorDeCara == i)
-                    {
-                        contadorAux++;
-                        break;
-                    }
-
+                    continue;
                 }
+
+                if (ordenados[i + 1].ValorDeCara == ordenados[i].ValorDeCara + 1)
+                {
+                    contadorAux++;
+                }
+                else
+                    if (contadorAux < 3)
+                    contadorAux = 1;
             }
 
-            return contadorAux >= 2 ? true : false;
+            return contadorAux >= 3 ? true : false;
         }
 
         //HACER METODO GUARDAR UN DADO UTIL
@@ -294,13 +308,13 @@ namespace Entidades
             throw new NotImplementedException();
         }
 
-        public void GuardarPosiblePokerFullGenerala(List<Dado> dados)
-        {
+        /* public void GuardarPosiblePokerFullGenerala(List<Dado> dados)
+         {
 
 
-            throw new NotImplementedException();
-        }
-
+             throw new NotImplementedException();
+         }
+ */
         public void GuardarPosibleEscalera(List<Dado> dados)
         {
             throw new NotImplementedException();
