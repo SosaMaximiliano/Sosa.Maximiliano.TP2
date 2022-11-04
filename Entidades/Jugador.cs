@@ -16,6 +16,8 @@ namespace Entidades
         private int salaAsignada;
         private List<Dado> dadosParaEscalera;
         private List<Dado> dadosParaFullPokerGenerala;
+        public bool vamosPorLaEscalera;
+        public bool vamosPorPFG;
 
         public string Nombre { get => nombre; }
         public string Apellido { get => apellido; }
@@ -33,6 +35,8 @@ namespace Entidades
             this.salaAsignada = salaAsignada;
             DadosParaFullPokerGenerala = new List<Dado>();
             DadosParaEscalera = new List<Dado>();
+            this.vamosPorLaEscalera = false;
+            this.vamosPorPFG = false;
         }
 
         public void Mezclar(List<Dado> dados)
@@ -139,19 +143,18 @@ namespace Entidades
             Mezclar(Sala.Dados);
 
             //2- TIRAR / MOSTRAR DADOS
-            Console.WriteLine($"DADOS JUGADOS: {TirarDados(Sala.Dados)}");
+            Console.WriteLine($"Valor del dado: {TirarDados(Sala.Dados)}".ToUpper());
 
             //3- REVISAR JUEGOS SERVIDOS O POSIBLES
-            //SI HAY POSIBLE ESCALERA Y POSIBLE OTROS PRIORIZAR LA QUE VALGA MAS
 
 
             if (PosibleFullPokerGenerala(Sala.Dados))
             {
-                Console.WriteLine("Posible Full, Poker o Generala");
+                Console.WriteLine("Posible Full, Poker o Generala".ToUpper());
             }
             if (PosibleEscalera(Sala.Dados))
             {
-                Console.WriteLine("Posible Escalera");
+                Console.WriteLine("Posible Escalera".ToUpper());
             }
 
             //4- CANTAR JUEGOS
@@ -162,8 +165,9 @@ namespace Entidades
             Console.WriteLine($"PUNTAJE: {Puntaje}");
 
             //5- GUARDAR DADOS UTILES
+            //SI HAY POSIBLE ESCALERA Y POSIBLE PFG DECIDE CON UN RANDOM
 
-
+            GuardarDados(Sala.Dados);
 
 
 
@@ -175,7 +179,7 @@ namespace Entidades
         //SI NO DEVUELVE LA LISTA COMO ESTÁ
         public void GuardarDadosParaFullPokerGenerala(List<Dado> dados)
         {
-            if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados))) //SI NO ES JUEGO SERVIDO
+            if (!(Reglas.Full(dados) && Reglas.Generala(dados))) //SI NO ES JUEGO SERVIDO
             {
                 int[] carasDelDado = new int[6];
 
@@ -232,10 +236,10 @@ namespace Entidades
 
         }
 
-        //BOOL SI ALGUN DADO SE REPITE DOS O TRES VECES
+        //TRUE SI ALGUN DADO SE REPITE DOS O TRES VECES
         public static bool PosibleFullPokerGenerala(List<Dado> dados)
         {
-            if (!Reglas.Full(dados) && !Reglas.Poker(dados) && !Reglas.Generala(dados))
+            if (!Reglas.Full(dados) && !Reglas.Generala(dados))
             {
                 int[] carasDelDado = new int[6];
 
@@ -281,6 +285,7 @@ namespace Entidades
             return false;
         }
 
+        //TRUE SI HAY AL MENOS DOS DADOS CORRELATIVOS
         public static bool PosibleEscalera(List<Dado> dados)
         {
             int contadorAux = 1;
@@ -305,18 +310,75 @@ namespace Entidades
             return contadorAux >= 3 ? true : false;
         }
 
-        //HACER METODO GUARDAR UN DADO UTIL
-        public static bool EsUnDadoUtil(List<Dado> dados)
+
+
+
+        //HACER METODO COMPLETAR UNA JUGADA
+        //SI SE JUEGAN MENOS DE CINCO DADOS (ENTRE UNO Y TRES REALMENTE. PARA QUE TENGA LOGICA DEBERIA TENER AL MENOS DOS GUARDADOS)
+        public void CompletarJuego(List<Dado> dados)
         {
+
             /*
              * Recorro la lista de los dados jugados.
-             * Tengo un array con los valores que se repiten dos o tres veces.
-             * Si un dado jugado completa un juego lo guardo
+             * Recorro la lista de los dados guardados.
+             * Si un dado se repite lo guardo.
              */
 
-            throw new NotImplementedException();
+            //SI SE JUEGA POR PFG:
+            if (vamosPorPFG)
+            {
+                foreach (Dado dadoGuardado in DadosParaFullPokerGenerala)
+                {
+                    foreach (Dado dado in dados)
+                    {
+                        if (dadoGuardado.ValorDeCara == dado.ValorDeCara)
+                        {
+                            DadosParaFullPokerGenerala.Add(new Dado { ValorDeCara = dado.ValorDeCara });
+                            dado.ValorDeCara = 0;
+                            break;
+                        }
+                    }
+                }
+
+                foreach (Dado dado in dados) //ROMPE PORQUE SE MODIFICA LA LISTA EN TIEMPO DE EJECUCION. HACER UN METODO QUE LIMPIE LA LISTA
+                {
+                    if (dado.ValorDeCara == 0)
+                    {
+                        dados.Remove(dado);
+                    }
+                }
+
+            }
+
+            //SI SE JUEGA POR LA ESCALERA:
+            if (vamosPorLaEscalera)
+            {
+                foreach (Dado dado in dados) 
+                {
+                    if (dado.ValorDeCara == dadosParaEscalera[0].ValorDeCara - 1 || dado.ValorDeCara == dadosParaEscalera[dadosParaEscalera.Count - 1].ValorDeCara + 1)
+                    {
+                        dadosParaEscalera.Add(new Dado { ValorDeCara = dado.ValorDeCara });
+                        dado.ValorDeCara = 0;
+                        break;
+                    }
+                }
+
+                foreach (Dado dado in dados) //ROMPE PORQUE SE MODIFICA LA LISTA EN TIEMPO DE EJECUCION. HACER UN METODO QUE LIMPIE LA LISTA
+                {
+                    if (dado.ValorDeCara == 0)
+                    {
+                        dados.Remove(dado);
+                    }
+                }
+
+
+            }
+
         }
 
+
+
+        //PARA QUE FUNCIONE TIENEN QUE HABER AL MENOS DOS DADOS PARA QUE COMPARE
         public void GuardarDadosParaEscalera(List<Dado> dados)
         {
 
@@ -363,15 +425,40 @@ namespace Entidades
                 int aleatorio = rand.Next(1, 3);
 
                 if (aleatorio == 1)
+                {
+                    vamosPorLaEscalera = true;
                     GuardarDadosParaEscalera(Sala.Dados);
+                    Sala.Dados.Clear();
+                    for (int i = 0; i < 5 - DadosParaEscalera.Count; i++)
+                    {
+                        Sala.Dados.Add(new Dado());
+                    }
+                }
                 else
+                {
+                    vamosPorPFG = true;
                     GuardarDadosParaFullPokerGenerala(Sala.Dados);
+                    Sala.Dados.Clear();
+                    for (int i = 0; i < 5 - DadosParaFullPokerGenerala.Count; i++)
+                    {
+                        Sala.Dados.Add(new Dado());
+                    }
+                }
             }
             else
+            {
+                vamosPorPFG = true;
                 GuardarDadosParaFullPokerGenerala(Sala.Dados);
+                Sala.Dados.Clear();
+                for (int i = 0; i < 5 - DadosParaFullPokerGenerala.Count; i++)
+                {
+                    Sala.Dados.Add(new Dado());
+                }
+            }
 
         }
 
+        //1 SI b == a+1; 0 SI b == a
         internal int EsConsecutivo(int a, int b)
         {
             return b - a;
