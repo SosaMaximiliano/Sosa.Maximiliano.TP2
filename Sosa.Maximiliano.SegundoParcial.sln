@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consola", "Consola\Consola.csproj", "{436D1CEF-C3D7-410E-BC63-91BF1CE2206B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades.Test", "Entidades.Test\Entidades.Test.csproj", "{658A8DC8-147C-4D3B-897F-9F0B0347FF80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades.Test", "Entidades.Test\Entidades.Test.csproj", "{658A8DC8-147C-4D3B-897F-9F0B0347FF80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -193,7 +193,7 @@ namespace Entidades
 
         public static bool GeneralaServida(List<Dado> dados)
         {
-            if (Sala.mano == 1)
+            if (dados.Count == 5)
 
                 if (Generala(dados))
                 {

@@ -14,7 +14,6 @@ namespace Entidades
         private static int puntaje;
         private static int partidasGanadas;
         private int salaAsignada;
-        private List<Dado> dadosPrometedores;
         private List<Dado> dadosParaEscalera;
         private List<Dado> dadosParaFullPokerGenerala;
 
@@ -22,7 +21,6 @@ namespace Entidades
         public string Apellido { get => apellido; }
         public static int Puntaje { get => puntaje; set => puntaje = value; }
         public static int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
-        public List<Dado> DadosPrometedores { get => dadosPrometedores; set => dadosPrometedores = value; }
         public List<Dado> DadosParaEscalera { get => dadosParaEscalera; set => dadosParaEscalera = value; }
         public List<Dado> DadosParaFullPokerGenerala { get => dadosParaFullPokerGenerala; set => dadosParaFullPokerGenerala = value; }
 
@@ -33,31 +31,25 @@ namespace Entidades
             puntaje = 0;
             partidasGanadas = 0;
             this.salaAsignada = salaAsignada;
-            DadosPrometedores = new List<Dado>();
             DadosParaFullPokerGenerala = new List<Dado>();
             DadosParaEscalera = new List<Dado>();
         }
 
-        internal void Mezclar(List<Dado> dados)
+        public void Mezclar(List<Dado> dados)
         {
-            foreach (Dado dado in dados)
-            {
-                Random rand = new Random();
-                dado.ValorDeCara = rand.Next(1, 7);
-            }
+            Random rand = new Random();
+
+            dados.ForEach(dado => dado.ValorDeCara = rand.Next(1, 7));
+
         }
 
-        internal string TirarDados(List<Dado> dados)
+        public string TirarDados(List<Dado> dados)
         {
-            List<Dado> ordenados = dados.OrderBy(dado => dado.ValorDeCara).ToList();
+            //List<Dado> ordenados = dados.OrderBy(dado => dado.ValorDeCara).ToList();
 
             StringBuilder valorDados = new StringBuilder();
 
-            foreach (Dado dado in ordenados)
-            {
-                valorDados.Append($"{dado.ValorDeCara.ToString()} ");
-            }
-
+            dados.ForEach(dado => valorDados.Append($"{dado.ValorDeCara} "));
 
             return valorDados.ToString();
         }
@@ -102,24 +94,46 @@ namespace Entidades
 
         }
 
-        public string MostrarDadosGuardados(List<Dado> dadosJugador)
+        public static string MostrarDadosGuardados(List<Dado> lista1, List<Dado> lista2)
         {
             StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
 
-            foreach (Dado dado in dadosJugador)
+            foreach (Dado dado in lista1)
             {
                 if (dado is not null)
                 {
                     sb.Append($"{dado.ValorDeCara} ");
                 }
             }
-            return $"Dados guardados: {sb.ToString()}".ToUpper();
+
+            foreach (Dado dado in lista2)
+            {
+                if (dado is not null)
+                {
+                    sb2.Append($"{dado.ValorDeCara} ");
+                }
+            }
+            return $"Dados guardados: {sb} {sb2}".ToUpper();
+        }
+
+        public static string MostrarDadosGuardados(List<Dado> lista)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Dado dado in lista)
+            {
+                if (dado is not null)
+                {
+                    sb.Append($"{dado.ValorDeCara} ");
+                }
+            }
+
+            return $"Dados guardados: {sb}".ToUpper();
         }
 
         public void JugarMano() //ESTE PUEDE SER UN DELEGADO QUE LLAME A LOS METODOS
         {
-            Sala.mano++;
-
 
             //1- MEZCLAR
             Mezclar(Sala.Dados);
@@ -128,7 +142,7 @@ namespace Entidades
             Console.WriteLine($"DADOS JUGADOS: {TirarDados(Sala.Dados)}");
 
             //3- REVISAR JUEGOS SERVIDOS O POSIBLES
-            //SI HAY POSIBLE ESCALERA Y POSIBLE OTROS PRIORIZAR LOS OTROS Y VOLVER A JUGAR LA ESCALERA
+            //SI HAY POSIBLE ESCALERA Y POSIBLE OTROS PRIORIZAR LA QUE VALGA MAS
 
 
             if (PosibleFullPokerGenerala(Sala.Dados))
@@ -161,14 +175,13 @@ namespace Entidades
         //SI NO DEVUELVE LA LISTA COMO ESTÁ
         public void GuardarDadosParaFullPokerGenerala(List<Dado> dados)
         {
-            if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados)))
+            if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados))) //SI NO ES JUEGO SERVIDO
             {
-                Dado dadoAux;
                 int[] carasDelDado = new int[6];
 
-                foreach (Dado dado in dados)
+                foreach (Dado dado in dados) //Veo el valor de cada dado que salio
                 {
-                    if (dado is not null && dado.ValorDeCara > 0)
+                    if (dado is not null)
                     {
                         switch (dado.ValorDeCara)
                         {
@@ -201,24 +214,20 @@ namespace Entidades
                 {
                     if (carasDelDado[i] == 2)
                     {
-                        dadoAux = new Dado();
-                        dadoAux.ValorDeCara = i + 1;
-                        DadosParaFullPokerGenerala.Add(dadoAux);
-                        DadosParaFullPokerGenerala.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(new Dado { ValorDeCara = i + 1 });
+                        DadosParaFullPokerGenerala.Add(new Dado { ValorDeCara = i + 1 });
+
                     }
 
                     if (carasDelDado[i] == 3)
                     {
-                        dadoAux = new Dado();
-                        dadoAux.ValorDeCara = i + 1;
-                        DadosParaFullPokerGenerala.Add(dadoAux);
-                        DadosParaFullPokerGenerala.Add(dadoAux);
-                        DadosParaFullPokerGenerala.Add(dadoAux);
+                        DadosParaFullPokerGenerala.Add(new Dado { ValorDeCara = i + 1 });
+                        DadosParaFullPokerGenerala.Add(new Dado { ValorDeCara = i + 1 });
+                        DadosParaFullPokerGenerala.Add(new Dado { ValorDeCara = i + 1 });
                     }
 
                 }
 
-                //SI ES UN SOLO DADO QUE SIRVE GUARDARLO
             }
 
         }
@@ -226,7 +235,7 @@ namespace Entidades
         //BOOL SI ALGUN DADO SE REPITE DOS O TRES VECES
         public static bool PosibleFullPokerGenerala(List<Dado> dados)
         {
-            if (!(Reglas.Full(dados) && Reglas.Poker(dados) && Reglas.Generala(dados)))
+            if (!Reglas.Full(dados) && !Reglas.Poker(dados) && !Reglas.Generala(dados))
             {
                 int[] carasDelDado = new int[6];
 
@@ -308,34 +317,65 @@ namespace Entidades
             throw new NotImplementedException();
         }
 
-        /* public void GuardarPosiblePokerFullGenerala(List<Dado> dados)
-         {
-
-
-             throw new NotImplementedException();
-         }
- */
-        public void GuardarPosibleEscalera(List<Dado> dados)
+        public void GuardarDadosParaEscalera(List<Dado> dados)
         {
-            throw new NotImplementedException();
-        }
 
-        //REVISAR
-        //SE ROMPE PORQUE MODIFICA LA LISTA EN TIEMPO DE EJECUCION
-        /*public void AgregarDadoUtil(List<Dado> dados)
-        {
-            foreach (Dado dado in dados)
+            List<Dado> aux = new List<Dado>();
+            List<Dado> ordenados = dados.OrderBy(dado => dado.ValorDeCara).ToList();
+
+            for (int i = 0; i < ordenados.Count - 1; i++)
             {
-                foreach (Dado dadoJugador in this.DadosPrometedores)
+                //if (ordenados[i] is not null && ordenados[i + 1] is not null)
+                if (EsConsecutivo(ordenados[i].ValorDeCara, ordenados[i + 1].ValorDeCara) == 0)
                 {
-                    if (dado.ValorDeCara == dadoJugador.ValorDeCara)
-                    {
-                        DadosPrometedores.Add(dado);
-                    }
+                    ordenados.RemoveAt(i);
+                }
+
+            }
+
+            for (int i = 0; i < ordenados.Count - 1; i++)
+            {
+                if (EsConsecutivo(ordenados[i].ValorDeCara, ordenados[i + 1].ValorDeCara) == 1)
+                {
+                    aux.Add(new Dado { ValorDeCara = ordenados[i].ValorDeCara });
                 }
             }
-        }*/
 
+            //HAY UN DADO QUE NO SE GUARDA CON EL METODO PERO QUE EXISTE, ASÍ QUE LO GENERO A MANOPLA
+
+            if (aux.Count > 0)
+            {
+                aux.Insert(aux.Count, new Dado { ValorDeCara = (aux[aux.Count - 1].ValorDeCara + 1) });
+            }
+
+            DadosParaEscalera = aux;
+
+        }
+
+
+
+        public void GuardarDados(List<Dado> dados)
+        {
+            Random rand = new Random();
+
+            if (PosibleEscalera(Sala.Dados) && PosibleFullPokerGenerala(Sala.Dados))
+            {
+                int aleatorio = rand.Next(1, 3);
+
+                if (aleatorio == 1)
+                    GuardarDadosParaEscalera(Sala.Dados);
+                else
+                    GuardarDadosParaFullPokerGenerala(Sala.Dados);
+            }
+            else
+                GuardarDadosParaFullPokerGenerala(Sala.Dados);
+
+        }
+
+        internal int EsConsecutivo(int a, int b)
+        {
+            return b - a;
+        }
     }
 }
 

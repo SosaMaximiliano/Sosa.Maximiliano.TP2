@@ -8,13 +8,11 @@ namespace Entidades
         private static List<Dado> posibleEscalera;
         private static List<Dado> posibleFullPokerGenerala;
         private static Cubilete cubilete;
-        public static int mano;
 
         static Sala()
         {
             dados = new List<Dado>();
             cubilete = new Cubilete(Dados);
-            mano = 0;
             posibleEscalera = new List<Dado>();
             posibleFullPokerGenerala = new List<Dado>();
         }
