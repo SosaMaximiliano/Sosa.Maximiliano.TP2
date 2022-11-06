@@ -2,24 +2,33 @@
 
 namespace Entidades
 {
-    public static class Sala
+    public class Sala
     {
-        private static List<Dado> dados;
-        private static List<Dado> posibleEscalera;
-        private static List<Dado> posibleFullPokerGenerala;
-        private static Cubilete cubilete;
+        private int numeroSala;
+        private static List<int> dados;
+        static Random rand = new Random();
+        private string jugador1;
+        private string jugador2;
+        
 
-        static Sala()
+        public Sala(int numeroSala, Jugador jugador1, Jugador jugador2)
         {
-            dados = new List<Dado>();
-            cubilete = new Cubilete(Dados);
-            posibleEscalera = new List<Dado>();
-            posibleFullPokerGenerala = new List<Dado>();
+            this.numeroSala = numeroSala;
+
+            dados = new List<int>();
+            dados.Add(rand.Next(1, 7));
+            dados.Add(rand.Next(1, 7));
+            dados.Add(rand.Next(1, 7));
+            dados.Add(rand.Next(1, 7));
+            dados.Add(rand.Next(1, 7));
+
+            this.jugador1 = jugador1.Nombre +" "+ jugador1.Apellido;
+            this.jugador2 = jugador2.Nombre +" "+ jugador2.Apellido;
         }
 
-        public static Cubilete Cubilete { get => cubilete;}
-        public static List<Dado> Dados { get => dados; set => dados = value; }
-        public static List<Dado> PosibleEscalera { get => posibleEscalera; set => posibleEscalera = value; }
-        public static List<Dado> PosibleFullPokerGenerala { get => posibleFullPokerGenerala; set => posibleFullPokerGenerala = value; }
+        public static List<int> Dados { get => dados; set => dados = value; }
+        public int NumeroSala { get => numeroSala; }
+        public string Jugador1 { get => jugador1; }
+        public string Jugador2 { get => jugador2; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public delegate string TirarDados(List<Dado> dados);
+    public delegate string TirarDados(List<int> dados);
 
     public class Delegados
     {

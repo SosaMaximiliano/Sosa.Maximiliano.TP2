@@ -6352,19 +6352,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\maxis\\.nuget\\packages\\": {}
+    "C:\\Users\\Kali\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
+      "projectUniqueName": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
       "projectName": "Entidades.Test",
-      "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
-      "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\obj\\",
+      "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
+      "packagesPath": "C:\\Users\\Kali\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kali\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6378,8 +6378,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
+            "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
             }
           }
         }
@@ -6427,8 +6427,45 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU3037",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Paquete \"Microsoft.NETCore.Platforms 1.0.1\" del origen \"C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\\": El período de validez de firma principal del repositorio ha expirado.",
+      "libraryId": "Microsoft.NETCore.Platforms"
+    },
+    {
+      "code": "NU3037",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Paquete \"System.IO.FileSystem 4.0.1\" del origen \"C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\\": El período de validez de firma principal del repositorio ha expirado.",
+      "libraryId": "System.IO.FileSystem"
+    },
+    {
+      "code": "NU3037",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Paquete \"runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple 4.3.0\" del origen \"C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\\": El período de validez de firma principal del repositorio ha expirado.",
+      "libraryId": "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple"
+    },
+    {
+      "code": "NU3037",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Paquete \"System.Threading.Tasks.Extensions 4.0.0\" del origen \"C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\\": El período de validez de firma principal del repositorio ha expirado.",
+      "libraryId": "System.Threading.Tasks.Extensions"
+    },
+    {
+      "code": "NU3037",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Paquete \"System.Reflection.TypeExtensions 4.1.0\" del origen \"C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\\": El período de validez de firma principal del repositorio ha expirado.",
+      "libraryId": "System.Reflection.TypeExtensions"
+    }
+  ]
 }

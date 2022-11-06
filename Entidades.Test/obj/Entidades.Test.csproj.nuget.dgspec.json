@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj": {}
+    "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj": {
+    "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
+        "projectUniqueName": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
         "projectName": "Entidades.Test",
-        "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
-        "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\obj\\",
+        "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\Entidades.Test.csproj",
+        "packagesPath": "C:\\Users\\Kali\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -77,21 +77,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
-        "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
+        "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+        "packagesPath": "C:\\Users\\Kali\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -132,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

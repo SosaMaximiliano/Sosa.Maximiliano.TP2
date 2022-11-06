@@ -15,22 +15,18 @@ namespace Entidades.Test
         //[DataRow(6,5,4,3,2)]
         //[DataRow(2,4,6,3,5)]
         [DataRow(2, 4, 6, 1, 3)]
-        [DataRow(4, 4, 5, 6, 6)]
+        //[DataRow(4, 4, 5, 6, 6)]
         [TestMethod]
         public void PoderGuardarDadosParaEscalera(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
             //G
-            List<Dado> dados = new List<Dado>();
-            for (int i = 0; i < 5; i++)
-            {
-                dados.Add(new Dado());
-            }
-            dados[0].ValorDeCara = dado1;
-            dados[1].ValorDeCara = dado2;
-            dados[2].ValorDeCara = dado3;
-            dados[3].ValorDeCara = dado4;
-            dados[4].ValorDeCara = dado5;
+            List<int> dados = new List<int>();
 
+            dados.Add(dado1);
+            dados.Add(dado2);
+            dados.Add(dado3);
+            dados.Add(dado4);
+            dados.Add(dado5);
 
             Jugador jugador = new Jugador("Max", "Payne", 1);
 
@@ -39,14 +35,14 @@ namespace Entidades.Test
 
             //T
 
-            Assert.AreEqual(3, jugador.DadosParaEscalera.Count);
+            Assert.AreEqual(4, jugador.DadosParaEscalera.Count);
         }
 
 
         //[DataRow(1, 5, 5, 1, 1)] //RECIBE 3 y 2
         //[DataRow(1, 5, 5, 4, 1)] //RECIBE 2 y 2
-        [DataRow(1, 3, 5, 1, 1)] //RECIBE 3
-        //[DataRow(1, 3, 5, 2, 1)] //RECIBE 2
+        //[DataRow(1, 3, 5, 1, 1)] //RECIBE 3
+        [DataRow(1, 3, 5, 2, 1)] //RECIBE 2
         //[DataRow(1, 5, 5)]
         //[DataRow(4, 4, 4)]
         //[DataRow(3, 3)]
@@ -54,16 +50,13 @@ namespace Entidades.Test
         public void PoderGuardarDadosParaFullPokerGenerala(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
             //G
-            List<Dado> dados = new List<Dado>();
-            for (int i = 0; i < 5; i++)
-            {
-                dados.Add(new Dado());
-            }
-            dados[0].ValorDeCara = dado1;
-            dados[1].ValorDeCara = dado2;
-            dados[2].ValorDeCara = dado3;
-            dados[3].ValorDeCara = dado4;
-            dados[4].ValorDeCara = dado5;
+            List<int> dados = new List<int>();
+
+            dados.Add(dado1);
+            dados.Add(dado2);
+            dados.Add(dado3);
+            dados.Add(dado4);
+            dados.Add(dado5);
 
 
             Jugador jugador = new Jugador("Max", "Payne", 1);
@@ -73,7 +66,7 @@ namespace Entidades.Test
 
             //T
 
-            Assert.AreEqual(3, jugador.DadosParaFullPokerGenerala.Count);
+            Assert.AreEqual(2, jugador.DadosParaFullPokerGenerala.Count);
         }
 
 
@@ -83,16 +76,13 @@ namespace Entidades.Test
         [TestMethod]
         public void ValidarPosibleFullPokerGenerala(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
-            List<Dado> dados = new List<Dado>();
-            for (int i = 0; i < 5; i++)
-            {
-                dados.Add(new Dado());
-            }
-            dados[0].ValorDeCara = dado1;
-            dados[1].ValorDeCara = dado2;
-            dados[2].ValorDeCara = dado3;
-            dados[3].ValorDeCara = dado4;
-            dados[4].ValorDeCara = dado5;
+            List<int> dados = new List<int>();
+
+            dados.Add(dado1);
+            dados.Add(dado2);
+            dados.Add(dado3);
+            dados.Add(dado4);
+            dados.Add(dado5);
 
             Assert.AreEqual(true, Jugador.PosibleFullPokerGenerala(dados));
         }
@@ -104,18 +94,37 @@ namespace Entidades.Test
         [TestMethod]
         public void ValidarPosibleEscalera(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
-            List<Dado> dados = new List<Dado>();
-            for (int i = 0; i < 5; i++)
-            {
-                dados.Add(new Dado());
-            }
-            dados[0].ValorDeCara = dado1;
-            dados[1].ValorDeCara = dado2;
-            dados[2].ValorDeCara = dado3;
-            dados[3].ValorDeCara = dado4;
-            dados[4].ValorDeCara = dado5;
+            List<int> dados = new List<int>();
+
+            dados.Add(dado1);
+            dados.Add(dado2);
+            dados.Add(dado3);
+            dados.Add(dado4);
+            dados.Add(dado5);
 
             Assert.AreEqual(true, Jugador.PosibleEscalera(dados));
+        }
+
+        [DataRow(6, 4, 6, 6, 2)]
+        //[DataRow(3, 2, 6, 1, 5)]
+        [TestMethod]
+        public void PoderGuardarDados(int dado1, int dado2, int dado3, int dado4, int dado5)
+        {
+            List<int> dados = new List<int>();
+
+            dados.Add(dado1);
+            dados.Add(dado2);
+            dados.Add(dado3);
+            dados.Add(dado4);
+            dados.Add(dado5);
+
+            Jugador jugador = new Jugador("M", "P", 1);
+            jugador.DadosParaFullPokerGenerala.Clear();
+
+            jugador.GuardarDados(dados);
+            int aux = jugador.DadosParaFullPokerGenerala.Count;
+
+            Assert.AreEqual(3, jugador.DadosParaFullPokerGenerala.Count);
         }
 
     }

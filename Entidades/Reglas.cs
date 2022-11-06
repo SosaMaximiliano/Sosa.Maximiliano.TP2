@@ -9,15 +9,15 @@ namespace Entidades
     public static class Reglas
     {
 
-        public static bool EscaleraMenor(List<Dado> dados)
+        public static bool EscaleraMenor(List<int> dados)
         {
             int contadorAux = 0;
 
             for (int i = 1; i < 6; i++)
             {
-                foreach (Dado dado in dados)
+                foreach (int dado in dados)
                 {
-                    if (dado is not null && dado.ValorDeCara == i)
+                    if (dado == i)
                     {
                         contadorAux++;
                         break;
@@ -30,15 +30,15 @@ namespace Entidades
 
         }
 
-        public static bool EscaleraMayor(List<Dado> dados)
+        public static bool EscaleraMayor(List<int> dados)
         {
             int contadorAux = 0;
 
             for (int i = 2; i <= 6; i++)
             {
-                foreach (Dado dado in dados)
+                foreach (int dado in dados)
                 {
-                    if (dado is not null && dado.ValorDeCara == i)
+                    if (dado == i)
                     {
                         contadorAux++;
                         break;
@@ -50,15 +50,15 @@ namespace Entidades
             return contadorAux == 5 ? true : false;
         }
 
-        public static bool Full(List<Dado> dados)
+        public static bool Full(List<int> dados)
         {
             bool flag2 = false;
             bool flag3 = false;
             int[] cara = new int[6];
 
-            foreach (Dado dado in dados)
+            foreach (int dado in dados)
             {
-                switch (dado.ValorDeCara)
+                switch (dado)
                 {
                     case 1:
                         cara[0]++;
@@ -107,13 +107,13 @@ namespace Entidades
             return false;
         }
 
-        public static bool Poker(List<Dado> dados)
+        public static bool Poker(List<int> dados)
         {
             int[] cara = new int[6];
 
-            foreach (Dado dado in dados)
+            foreach (int dado in dados)
             {
-                switch (dado.ValorDeCara)
+                switch (dado)
                 {
                     case 1:
                         cara[0]++;
@@ -149,13 +149,13 @@ namespace Entidades
             return false;
         }
 
-        public static bool Generala(List<Dado> dados)
+        public static bool Generala(List<int> dados)
         {
             int[] cara = new int[6];
 
-            foreach (Dado dado in dados)
+            foreach (int dado in dados)
             {
-                switch (dado.ValorDeCara)
+                switch (dado)
                 {
                     case 1:
                         cara[0]++;
@@ -191,7 +191,7 @@ namespace Entidades
             return false;
         }
 
-        public static bool GeneralaServida(List<Dado> dados)
+        public static bool GeneralaServida(List<int> dados)
         {
             if (dados.Count == 5)
 
