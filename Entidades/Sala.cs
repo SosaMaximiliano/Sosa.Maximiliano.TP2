@@ -9,7 +9,7 @@ namespace Entidades
         static Random rand = new Random();
         private string jugador1;
         private string jugador2;
-        
+        private string ganador = string.Empty;
 
         public Sala(int numeroSala, Jugador jugador1, Jugador jugador2)
         {
@@ -24,11 +24,13 @@ namespace Entidades
 
             this.jugador1 = jugador1.Nombre +" "+ jugador1.Apellido;
             this.jugador2 = jugador2.Nombre +" "+ jugador2.Apellido;
+
         }
 
         public static List<int> Dados { get => dados; set => dados = value; }
         public int NumeroSala { get => numeroSala; }
         public string Jugador1 { get => jugador1; }
         public string Jugador2 { get => jugador2; }
+        public string Ganador { get => ganador; set => ganador = value; }
     }
 }

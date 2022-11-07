@@ -8,8 +8,6 @@ namespace Entidades
 {
     public delegate string TirarDados(List<int> dados);
 
-    public class Delegados
-    {
+    public delegate void Jugar(Jugador jugador);
 
-    }
 }

@@ -11,9 +11,8 @@ namespace Entidades
     {
         private string nombre;
         private string apellido;
-        private static int puntaje;
+        private int puntaje;
         private static int partidasGanadas;
-        private int salaAsignada;
         private static List<int> dadosParaEscalera;
         private static List<int> dadosParaFullPokerGenerala;
         public bool vamosPorLaEscalera;
@@ -21,18 +20,17 @@ namespace Entidades
 
         public string Nombre { get => nombre; }
         public string Apellido { get => apellido; }
-        public static int Puntaje { get => puntaje; set => puntaje = value; }
+        public int Puntaje { get => puntaje; set => puntaje = value; }
         public static int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
         public List<int> DadosParaEscalera { get => dadosParaEscalera; set => dadosParaEscalera = value; }
         public List<int> DadosParaFullPokerGenerala { get => dadosParaFullPokerGenerala; set => dadosParaFullPokerGenerala = value; }
 
-        public Jugador(string nombre, string apellido, int salaAsignada)
+        public Jugador(string nombre, string apellido)
         {
             this.nombre = nombre;
             this.apellido = apellido;
             puntaje = 0;
             partidasGanadas = 0;
-            this.salaAsignada = salaAsignada;
             dadosParaFullPokerGenerala = new List<int>();
             dadosParaEscalera = new List<int>();
             this.vamosPorLaEscalera = false;
