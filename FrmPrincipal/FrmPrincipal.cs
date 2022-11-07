@@ -15,6 +15,10 @@ namespace FrmPrincipal
         {
             frmPartida = new FrmPartida();
             frmPartida.Show();
+
+            dgSalas.DataSource = null;
+            dgSalas.DataSource = Torneo.Salas;
+
         }
     }
 }
