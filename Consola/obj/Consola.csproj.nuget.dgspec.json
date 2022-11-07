@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\Consola.csproj": {}
+    "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Consola\\Consola.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\Consola.csproj": {
+    "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Consola\\Consola.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\Consola.csproj",
+        "projectUniqueName": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Consola\\Consola.csproj",
         "projectName": "Consola",
-        "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\Consola.csproj",
-        "packagesPath": "C:\\Users\\Kali\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Consola\\obj\\",
+        "projectPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Consola\\Consola.csproj",
+        "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
+        "outputPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Consola\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
+              "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -59,21 +59,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
+    "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
-        "packagesPath": "C:\\Users\\Kali\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kali\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
+        "projectPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj",
+        "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
+        "outputPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -114,7 +114,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
