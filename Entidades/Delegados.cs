@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public delegate string TirarDados(List<int> dados);
+    public class Delegado
+    {
+        public delegate void Tirar(Jugador jugador1, Jugador jugador2);
 
-    public delegate void Jugar(Jugador jugador);
+        public delegate bool Ganador(Jugador jugador);
+
+        public delegate string MostrarJuego();
+    }
+
 
 }

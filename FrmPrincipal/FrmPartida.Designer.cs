@@ -32,8 +32,8 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNombreJ1 = new System.Windows.Forms.Label();
+            this.lblNombreJ2 = new System.Windows.Forms.Label();
             this.lblMano = new System.Windows.Forms.Label();
             this.lblPuntosJ1 = new System.Windows.Forms.Label();
             this.lblPuntosJ2 = new System.Windows.Forms.Label();
@@ -71,39 +71,39 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // lblNombreJ1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.PowderBlue;
-            this.label1.Location = new System.Drawing.Point(31, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Jugador 1";
+            this.lblNombreJ1.AutoSize = true;
+            this.lblNombreJ1.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombreJ1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNombreJ1.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lblNombreJ1.Location = new System.Drawing.Point(31, 96);
+            this.lblNombreJ1.Name = "lblNombreJ1";
+            this.lblNombreJ1.Size = new System.Drawing.Size(114, 29);
+            this.lblNombreJ1.TabIndex = 3;
+            this.lblNombreJ1.Text = "Jugador 1";
             // 
-            // label2
+            // lblNombreJ2
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.PowderBlue;
-            this.label2.Location = new System.Drawing.Point(318, 108);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Jugador 2";
+            this.lblNombreJ2.AutoSize = true;
+            this.lblNombreJ2.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombreJ2.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNombreJ2.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lblNombreJ2.Location = new System.Drawing.Point(318, 96);
+            this.lblNombreJ2.Name = "lblNombreJ2";
+            this.lblNombreJ2.Size = new System.Drawing.Size(118, 29);
+            this.lblNombreJ2.TabIndex = 4;
+            this.lblNombreJ2.Text = "Jugador 2";
             // 
             // lblMano
             // 
             this.lblMano.AutoSize = true;
             this.lblMano.BackColor = System.Drawing.Color.Transparent;
-            this.lblMano.Font = new System.Drawing.Font("Showcard Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMano.Font = new System.Drawing.Font("Bahnschrift", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblMano.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblMano.Location = new System.Drawing.Point(14, 9);
+            this.lblMano.Location = new System.Drawing.Point(31, 37);
             this.lblMano.Name = "lblMano";
-            this.lblMano.Size = new System.Drawing.Size(147, 50);
+            this.lblMano.Size = new System.Drawing.Size(139, 48);
             this.lblMano.TabIndex = 5;
             this.lblMano.Text = "MANO:";
             this.lblMano.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,11 +112,11 @@
             // 
             this.lblPuntosJ1.AutoSize = true;
             this.lblPuntosJ1.BackColor = System.Drawing.Color.Transparent;
-            this.lblPuntosJ1.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPuntosJ1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPuntosJ1.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblPuntosJ1.Location = new System.Drawing.Point(174, 108);
+            this.lblPuntosJ1.Location = new System.Drawing.Point(174, 96);
             this.lblPuntosJ1.Name = "lblPuntosJ1";
-            this.lblPuntosJ1.Size = new System.Drawing.Size(18, 20);
+            this.lblPuntosJ1.Size = new System.Drawing.Size(26, 29);
             this.lblPuntosJ1.TabIndex = 6;
             this.lblPuntosJ1.Text = "0";
             // 
@@ -124,11 +124,11 @@
             // 
             this.lblPuntosJ2.AutoSize = true;
             this.lblPuntosJ2.BackColor = System.Drawing.Color.Transparent;
-            this.lblPuntosJ2.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPuntosJ2.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPuntosJ2.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblPuntosJ2.Location = new System.Drawing.Point(462, 108);
+            this.lblPuntosJ2.Location = new System.Drawing.Point(462, 96);
             this.lblPuntosJ2.Name = "lblPuntosJ2";
-            this.lblPuntosJ2.Size = new System.Drawing.Size(18, 20);
+            this.lblPuntosJ2.Size = new System.Drawing.Size(26, 29);
             this.lblPuntosJ2.TabIndex = 7;
             this.lblPuntosJ2.Text = "0";
             // 
@@ -142,8 +142,8 @@
             this.Controls.Add(this.lblPuntosJ2);
             this.Controls.Add(this.lblPuntosJ1);
             this.Controls.Add(this.lblMano);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNombreJ2);
+            this.Controls.Add(this.lblNombreJ1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
@@ -159,8 +159,8 @@
         private RichTextBox richTextBox1;
         private RichTextBox richTextBox2;
         private Button button1;
-        private Label label1;
-        private Label label2;
+        private Label lblNombreJ1;
+        private Label lblNombreJ2;
         private Label lblMano;
         private Label lblPuntosJ1;
         private Label lblPuntosJ2;

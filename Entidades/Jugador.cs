@@ -10,27 +10,25 @@ namespace Entidades
     public class Jugador
     {
         private string nombre;
-        private string apellido;
+        //private string apellido;
         private int puntaje;
-        private static int partidasGanadas;
-        private static List<int> dadosParaEscalera;
-        private static List<int> dadosParaFullPokerGenerala;
+        private List<int> dadosParaEscalera;
+        private List<int> dadosParaFullPokerGenerala;
+        public List<int> dadosJugador;
         public bool vamosPorLaEscalera;
         public bool vamosPorPFG;
 
         public string Nombre { get => nombre; }
-        public string Apellido { get => apellido; }
+        //public string Apellido { get => apellido; }
         public int Puntaje { get => puntaje; set => puntaje = value; }
-        public static int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
         public List<int> DadosParaEscalera { get => dadosParaEscalera; set => dadosParaEscalera = value; }
         public List<int> DadosParaFullPokerGenerala { get => dadosParaFullPokerGenerala; set => dadosParaFullPokerGenerala = value; }
 
-        public Jugador(string nombre, string apellido)
+        public Jugador(string nombre)
         {
             this.nombre = nombre;
-            this.apellido = apellido;
+            //this.apellido = apellido;
             puntaje = 0;
-            partidasGanadas = 0;
             dadosParaFullPokerGenerala = new List<int>();
             dadosParaEscalera = new List<int>();
             this.vamosPorLaEscalera = false;
@@ -49,6 +47,22 @@ namespace Entidades
                 dados.Add(rand.Next(1, 7));
             }
 
+        }
+
+        public List<int> Mezclar()
+        {
+            Random rand = new Random();
+
+            List<int> aux = new List<int>();
+
+            aux.Clear();
+
+            for (int i = 0; i < 5; i++)
+            {
+                aux.Add(rand.Next(1, 7));
+            }
+
+            return aux;
         }
 
         public string TirarDados(List<int> dados)
@@ -82,7 +96,6 @@ namespace Entidades
 
         public string BuscarJuego(List<int> dados)
         {
-            SumarPuntos(dados);
 
             if (Reglas.EscaleraMayor(dados))
                 return "Escalera Mayor +20".ToUpper();
@@ -373,30 +386,24 @@ namespace Entidades
             return b - a;
         }
 
-        public string JugarMano() //ESTE PUEDE SER UN DELEGADO QUE LLAME A LOS METODOS
+        public void JugarMano()
         {
+            dadosJugador = Mezclar();
 
-            StringBuilder mano = new StringBuilder();
+            MostrarJuego();
 
-            //1- MEZCLAR
-            Mezclar(Sala.Dados);
+            BuscarJuego(dadosJugador);
 
-            //2- TIRAR / MOSTRAR DADOS
-            mano.AppendLine($"Valor del dado: {TirarDados(Sala.Dados)}".ToUpper());
+            SumarPuntos(dadosJugador);
+        }
 
-            //3- REVISAR SI HAY JUEGOS SERVIDOS (SI LOS DADOS EN LA SALA SON 5)
+        public string MostrarJuego()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
 
-            //3a- BUSCAR JUEGOS
-            mano.AppendLine(BuscarJuego(Sala.Dados));
+            this.dadosJugador.ForEach((x) => stringBuilder.AppendLine($"{x} "));
 
-
-            //4- GUARDAR DADOS UTILES
-            //GuardarDados(Sala.Dados);
-
-            //3b- SUMAR PUNTOS
-            mano.AppendLine($"PUNTAJE: {Puntaje}");
-
-            return mano.ToString();
+            return stringBuilder.ToString();
         }
     }
 }

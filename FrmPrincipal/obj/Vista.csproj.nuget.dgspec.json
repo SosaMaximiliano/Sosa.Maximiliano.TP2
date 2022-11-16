@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\FrmPrincipal\\Vista.csproj": {}
+    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj": {}
   },
   "projects": {
-    "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj",
-        "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-        "outputPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\obj\\",
+        "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+        "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,21 +61,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\FrmPrincipal\\Vista.csproj": {
+    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\FrmPrincipal\\Vista.csproj",
+        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj",
         "projectName": "Vista",
-        "projectPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\FrmPrincipal\\Vista.csproj",
-        "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-        "outputPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\FrmPrincipal\\obj\\",
+        "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj",
+        "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,8 +89,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Downloads\\Sosa.Maximiliano.TP2-master\\Sosa.Maximiliano.TP2-master\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -117,7 +123,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

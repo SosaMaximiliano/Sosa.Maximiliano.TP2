@@ -33,9 +33,11 @@
             this.dgSalas = new System.Windows.Forms.DataGridView();
             this.btnIniciarJuego = new System.Windows.Forms.Button();
             this.numeroSalaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreJugador1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreJugador2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ganadorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jugador1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jugador2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ganador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.salaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalas)).BeginInit();
             this.SuspendLayout();
@@ -50,11 +52,13 @@
             this.dgSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSalas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroSalaDataGridViewTextBoxColumn,
+            this.nombreJugador1DataGridViewTextBoxColumn,
+            this.nombreJugador2DataGridViewTextBoxColumn,
+            this.ganadorDataGridViewTextBoxColumn,
             this.jugador1DataGridViewTextBoxColumn,
-            this.jugador2DataGridViewTextBoxColumn,
-            this.Ganador});
+            this.jugador2DataGridViewTextBoxColumn});
             this.dgSalas.DataSource = this.salaBindingSource;
-            this.dgSalas.Location = new System.Drawing.Point(98, 25);
+            this.dgSalas.Location = new System.Drawing.Point(93, 25);
             this.dgSalas.Name = "dgSalas";
             this.dgSalas.RowTemplate.Height = 25;
             this.dgSalas.Size = new System.Drawing.Size(574, 371);
@@ -72,37 +76,42 @@
             // 
             // numeroSalaDataGridViewTextBoxColumn
             // 
-            this.numeroSalaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.numeroSalaDataGridViewTextBoxColumn.DataPropertyName = "NumeroSala";
             this.numeroSalaDataGridViewTextBoxColumn.HeaderText = "NumeroSala";
             this.numeroSalaDataGridViewTextBoxColumn.Name = "numeroSalaDataGridViewTextBoxColumn";
             this.numeroSalaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroSalaDataGridViewTextBoxColumn.Width = 97;
+            // 
+            // nombreJugador1DataGridViewTextBoxColumn
+            // 
+            this.nombreJugador1DataGridViewTextBoxColumn.DataPropertyName = "NombreJugador1";
+            this.nombreJugador1DataGridViewTextBoxColumn.HeaderText = "NombreJugador1";
+            this.nombreJugador1DataGridViewTextBoxColumn.Name = "nombreJugador1DataGridViewTextBoxColumn";
+            this.nombreJugador1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreJugador2DataGridViewTextBoxColumn
+            // 
+            this.nombreJugador2DataGridViewTextBoxColumn.DataPropertyName = "NombreJugador2";
+            this.nombreJugador2DataGridViewTextBoxColumn.HeaderText = "NombreJugador2";
+            this.nombreJugador2DataGridViewTextBoxColumn.Name = "nombreJugador2DataGridViewTextBoxColumn";
+            this.nombreJugador2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ganadorDataGridViewTextBoxColumn
+            // 
+            this.ganadorDataGridViewTextBoxColumn.DataPropertyName = "Ganador";
+            this.ganadorDataGridViewTextBoxColumn.HeaderText = "Ganador";
+            this.ganadorDataGridViewTextBoxColumn.Name = "ganadorDataGridViewTextBoxColumn";
             // 
             // jugador1DataGridViewTextBoxColumn
             // 
-            this.jugador1DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.jugador1DataGridViewTextBoxColumn.DataPropertyName = "Jugador1";
             this.jugador1DataGridViewTextBoxColumn.HeaderText = "Jugador1";
             this.jugador1DataGridViewTextBoxColumn.Name = "jugador1DataGridViewTextBoxColumn";
-            this.jugador1DataGridViewTextBoxColumn.ReadOnly = true;
-            this.jugador1DataGridViewTextBoxColumn.Width = 80;
             // 
             // jugador2DataGridViewTextBoxColumn
             // 
-            this.jugador2DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.jugador2DataGridViewTextBoxColumn.DataPropertyName = "Jugador2";
             this.jugador2DataGridViewTextBoxColumn.HeaderText = "Jugador2";
             this.jugador2DataGridViewTextBoxColumn.Name = "jugador2DataGridViewTextBoxColumn";
-            this.jugador2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.jugador2DataGridViewTextBoxColumn.Width = 80;
-            // 
-            // Ganador
-            // 
-            this.Ganador.DataPropertyName = "Ganador";
-            this.Ganador.HeaderText = "Ganador";
-            this.Ganador.Name = "Ganador";
-            this.Ganador.ReadOnly = true;
             // 
             // FrmPrincipal
             // 
@@ -113,6 +122,7 @@
             this.Controls.Add(this.dgSalas);
             this.Name = "FrmPrincipal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.salaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalas)).EndInit();
             this.ResumeLayout(false);
@@ -124,8 +134,10 @@
         private DataGridView dgSalas;
         private Button btnIniciarJuego;
         private DataGridViewTextBoxColumn numeroSalaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombreJugador1DataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombreJugador2DataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ganadorDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn jugador1DataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn jugador2DataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Ganador;
     }
 }

@@ -6,112 +6,66 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Entidades.Delegado;
 
 namespace FrmPrincipal
 {
     public partial class FrmPartida : Form
     {
         Sala sala;
-        Jugador jugador1;
-        Jugador jugador2;
-        TirarDados jugar; //DELEGADO
-        Jugar juegueNomas;
-        StringBuilder sb;
-        private int mano;
+        public int mano;
+        Tirar DTirar;
+        Ganador DGanador;
+        MostrarJuego DMostrarJuego;
+        int random;
+        Random rand = new Random();
 
         public FrmPartida()
         {
             InitializeComponent();
 
-            juegueNomas = Tarea01;
-
-            sb = new StringBuilder();
-
-            jugador1 = new Jugador("Gary", "Kasparov"); // EL NOMBRE TIENE QUE VENIR DE UNA VARIABLE SELECT DE LA DB
-            jugador2 = new Jugador("Bobby", "Fisher");
-
-            sala = new Sala(515, jugador1, jugador2);
-
-            Torneo.Salas.Add(sala);
+            string nombreJ1 = FrmPrincipal.ListaParticipantes[rand.Next(0, 100)];
+            string nombreJ2 = FrmPrincipal.ListaParticipantes[rand.Next(0, 100)];
 
             mano = 0;
+
+            sala = new Sala(515, nombreJ1, nombreJ2);
+            Torneo.Salas.Add(sala);
+            Torneo.Contrincantes.Add(sala.Jugador1);
+
+            //DELEGADOS
+            //DTirar = sala.JugarPartida;
+            DGanador = sala.HayGanador;
+            DMostrarJuego = sala.Jugador1.MostrarJuego;
+
+            lblNombreJ1.Text = nombreJ1;
+            lblNombreJ2.Text = nombreJ2;
         }
+
+        public Sala Sala { get => sala; }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            juegueNomas(jugador1); //COMO MIERDA USO EL DELEGADO?
+            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
-            lblMano.Text = $"MANO: {++mano}";
-            sb.Clear();
-            for (int i = 0; i < 3; i++)
+            lblMano.Text = $"MANO: {sala.Mano}";
+
+        }
+
+
+        public void MostrarJugada(string jugada)
+        {
+            if (this.richTextBox1.InvokeRequired)
             {
-                sb.AppendLine($"Tiro N° {i + 1}");
-                Task tarea1 = Task.Run(Tarea01);
-                tarea1.Wait();
-                richTextBox1.Text = sb.ToString();
-                lblPuntosJ1.Text = jugador1.Puntaje.ToString();
+                this.BeginInvoke(DMostrarJuego);
             }
-
-            sb.Clear();
-
-            Thread.Sleep(1000);
-
-            for (int i = 0; i < 3; i++)
-            {
-                sb.AppendLine($"Tiro N° {i + 1}");
-                Task tarea2 = Task.Run(Tarea02);
-                tarea2.Wait();
-                richTextBox2.Text = sb.ToString();
-                lblPuntosJ2.Text = jugador2.Puntaje.ToString();
-            }
-
-            /*Task tarea3 = Task.Run(Tarea03);
-            tarea3.Wait();
-            richTextBox2.Text = sb.ToString();*/
-
-
+            else
+                richTextBox1.Text += "LPM";
         }
-
-        public void Tarea01()
-        {
-            Thread.Sleep(2000);
-            sb.Append(jugador1.JugarMano());
-            sb.AppendLine();
-
-        }
-
-        public void Tarea01(Jugador jugador)
-        {
-            Thread.Sleep(2000);
-            sb.Append(jugador.JugarMano());
-            sb.AppendLine();
-
-        }
-
-        public void Tarea02()
-        {
-            Thread.Sleep(2000);
-            sb.Append(jugador2.JugarMano());
-            sb.AppendLine();
-
-        }
-
-        public void Tarea03()
-        {
-
-            sb.Clear();
-            for (int i = 0; i < 3; i++)
-            {
-                Thread.Sleep(2000);
-                sb.AppendLine($"Tiro N° {i + 1}");
-                sb.Append(jugador2.JugarMano());
-                sb.AppendLine();
-            }
-
-
-        }
+        
     }
 }
 
