@@ -9,9 +9,9 @@ namespace Entidades
 {
     public class ParticipantesDB
     {
-        public List<string> ObtenerJugadores()
+        public List<Jugador> ObtenerJugadores()
         {
-            List<string> participantes = new List<string>();
+            List<Jugador> participantes = new List<Jugador>();
 
             //Guardo la conexion en una variable
             //Creo un objeto de conexion y le paso la direccion por parametro
@@ -40,7 +40,7 @@ namespace Entidades
             {
                 string nombre = reader.GetString(0);
 
-                participantes.Add(nombre);
+                participantes.Add(new Jugador(nombre));
             }
 
             if (connection.State == System.Data.ConnectionState.Open)

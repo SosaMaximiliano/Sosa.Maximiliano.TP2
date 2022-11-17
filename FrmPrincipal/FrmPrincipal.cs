@@ -4,7 +4,6 @@ namespace FrmPrincipal
     public partial class FrmPrincipal : Form
     {
         FrmPartida frmPartida;
-        public static List<string> ListaParticipantes;
 
         public FrmPrincipal()
         {
@@ -14,12 +13,13 @@ namespace FrmPrincipal
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             ParticipantesDB jugadoresDB = new ParticipantesDB();
-            ListaParticipantes = jugadoresDB.ObtenerJugadores();
+            Torneo.Participantes = jugadoresDB.ObtenerJugadores();
 
-            dgSalas.DataSource = null;
-            dgSalas.DataSource = ListaParticipantes;
+            //dgSalas.DataSource = null;
+            dgSalas.DataSource = Torneo.Salas;
 
-            //dgSalas = ListaParticipantes[0];
+
+
         }
 
         private void btnIniciarJuego_Click(object sender, EventArgs e)

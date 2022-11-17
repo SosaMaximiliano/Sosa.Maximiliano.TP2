@@ -19,7 +19,6 @@ namespace Entidades
         public bool vamosPorPFG;
 
         public string Nombre { get => nombre; }
-        //public string Apellido { get => apellido; }
         public int Puntaje { get => puntaje; set => puntaje = value; }
         public List<int> DadosParaEscalera { get => dadosParaEscalera; set => dadosParaEscalera = value; }
         public List<int> DadosParaFullPokerGenerala { get => dadosParaFullPokerGenerala; set => dadosParaFullPokerGenerala = value; }
@@ -27,10 +26,10 @@ namespace Entidades
         public Jugador(string nombre)
         {
             this.nombre = nombre;
-            //this.apellido = apellido;
             puntaje = 0;
             dadosParaFullPokerGenerala = new List<int>();
             dadosParaEscalera = new List<int>();
+            this.dadosJugador = new List<int>();
             this.vamosPorLaEscalera = false;
             this.vamosPorPFG = false;
         }
@@ -389,8 +388,6 @@ namespace Entidades
         public void JugarMano()
         {
             dadosJugador = Mezclar();
-
-            MostrarJuego();
 
             BuscarJuego(dadosJugador);
 

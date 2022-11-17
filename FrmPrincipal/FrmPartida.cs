@@ -17,55 +17,75 @@ namespace FrmPrincipal
     {
         Sala sala;
         public int mano;
-        Tirar DTirar;
         Ganador DGanador;
         MostrarJuego DMostrarJuego;
-        int random;
-        Random rand = new Random();
 
         public FrmPartida()
         {
             InitializeComponent();
 
-            string nombreJ1 = FrmPrincipal.ListaParticipantes[rand.Next(0, 100)];
-            string nombreJ2 = FrmPrincipal.ListaParticipantes[rand.Next(0, 100)];
-
             mano = 0;
 
-            sala = new Sala(515, nombreJ1, nombreJ2);
+            sala = new Sala(ActualizarRch);
             Torneo.Salas.Add(sala);
-            Torneo.Contrincantes.Add(sala.Jugador1);
 
             //DELEGADOS
             //DTirar = sala.JugarPartida;
+            //DMostrarJuego = sala.Jugador1.MostrarJuego;
             DGanador = sala.HayGanador;
-            DMostrarJuego = sala.Jugador1.MostrarJuego;
 
-            lblNombreJ1.Text = nombreJ1;
-            lblNombreJ2.Text = nombreJ2;
+            lblNombreJ1.Text = sala.Jugador1.Nombre;
+            lblNombreJ2.Text = sala.Jugador2.Nombre;
         }
 
-        public Sala Sala { get => sala; }
+
+
+        public void ActualizarRch(string textoJ1, string textoJ2)
+        {
+            //lblMano.Text = $"MANO: {sala.Mano}";
+
+            if (this.richTextBox1.InvokeRequired)//Si el control es requerido desde otro hilo...
+            {
+                //Invoco la referencia del control a traves de un delegado
+                this.richTextBox1.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.richTextBox1.AppendText(textoJ1);
+                });
+            }
+
+            /*else //Si no fue requerido trabaja sobre el hilo en el que se creó
+            {
+                this.richTextBox1.AppendText(texto);
+            }*/
+
+
+
+            if (this.richTextBox2.InvokeRequired)
+            {
+                this.richTextBox2.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.richTextBox2.AppendText(textoJ2);
+                });
+            }
+
+            /* else
+             {
+                 this.richTextBox2.AppendText(texto);
+             }*/
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-
-            lblMano.Text = $"MANO: {sala.Mano}";
-
+            //ActualizarRch(ct, $"METODO LLAMADO DESDE EL HILO PRINCIPAL\n");
         }
 
-
-        public void MostrarJugada(string jugada)
+        private void FrmPartida_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.richTextBox1.InvokeRequired)
-            {
-                this.BeginInvoke(DMostrarJuego);
-            }
-            else
-                richTextBox1.Text += "LPM";
+            MessageBox.Show("La concha de la lora");
+            e.Cancel = true;
+            this.Hide();
         }
-        
     }
 }
 
