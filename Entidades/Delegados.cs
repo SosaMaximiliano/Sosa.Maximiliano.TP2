@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Delegado
+    public static class Delegado
     {
         public delegate void Tirar(Jugador jugador1, Jugador jugador2);
 
         public delegate bool Ganador(Jugador jugador);
 
-        public delegate string MostrarJuego();
+        public delegate void MostrarJuego(string texto, string texto2);
     }
 
 

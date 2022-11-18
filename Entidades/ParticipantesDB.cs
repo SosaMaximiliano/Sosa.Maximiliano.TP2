@@ -31,7 +31,7 @@ namespace Entidades
             command.CommandType = System.Data.CommandType.Text;
 
 
-            command.CommandText = "SELECT * FROM Participantes2";
+            command.CommandText = "SELECT * FROM Participantes";
 
             SqlDataReader reader = command.ExecuteReader();
 
