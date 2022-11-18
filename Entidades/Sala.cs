@@ -46,11 +46,9 @@ namespace Entidades
 
         public void JugarPartida(Jugador jugador1, Jugador jugador2, delegadoPrueba delegadoMostrar)
         {
-            hayGanador = (HayGanador(Jugador1) || HayGanador(Jugador2));
 
-            while (!hayGanador)
+            do
             {
-
                 this.Mano++;
 
                 for (int i = 0; i < 3; i++)
@@ -58,6 +56,7 @@ namespace Entidades
                     jugador1.JugarMano();
                     delegadoMostrar.Invoke(MostrarJugadas(jugador1), "");
                     Thread.Sleep(2000);
+
                 }
 
                 for (int i = 0; i < 3; i++)
@@ -67,7 +66,8 @@ namespace Entidades
                     Thread.Sleep(2000);
                 }
 
-            }
+                hayGanador = (HayGanador(Jugador1) || HayGanador(Jugador2));
+            } while (!hayGanador);
 
         }
 
@@ -76,7 +76,22 @@ namespace Entidades
 
         public bool HayGanador(Jugador jugador)
         {
-            return jugador.Puntaje >= 100 ? true : false;
+            return jugador.Puntaje >= 20 ? true : false;
+        }
+
+        public string JugadorGanador()
+        {
+            if (HayGanador(this.Jugador1))
+            {
+                return $"GANADOR {this.Jugador1.Nombre}";
+            }
+
+            if (HayGanador(this.Jugador2))
+            {
+                return $"GANADOR {this.Jugador2.Nombre}";
+            }
+
+            return string.Empty;
         }
 
         //Metodo mostrar jugadas
@@ -85,7 +100,7 @@ namespace Entidades
         {
             StringBuilder jugada = new StringBuilder();
 
-            jugada.AppendLine(jugador.Nombre);
+            //jugada.AppendLine(jugador.Nombre);
 
             jugada.AppendLine("DADOS:");
 
@@ -96,6 +111,8 @@ namespace Entidades
             jugada.AppendLine(jugador.BuscarJuego(jugador.dadosJugador));
 
             jugada.AppendLine($"PUNTAJE: {jugador.Puntaje}");
+
+            jugada.AppendLine("\n");
 
             return jugada.ToString();
         }
