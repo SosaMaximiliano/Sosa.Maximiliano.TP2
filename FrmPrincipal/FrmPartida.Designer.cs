@@ -28,48 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPartida));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelarPartida = new System.Windows.Forms.Button();
             this.lblNombreJ1 = new System.Windows.Forms.Label();
             this.lblNombreJ2 = new System.Windows.Forms.Label();
             this.lblMano = new System.Windows.Forms.Label();
             this.lblPuntosJ1 = new System.Windows.Forms.Label();
             this.lblPuntosJ2 = new System.Windows.Forms.Label();
+            this.lblGanador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBox1.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox1.Location = new System.Drawing.Point(31, 131);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(181, 276);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(181, 306);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
             // richTextBox2
             // 
+            this.richTextBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBox2.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox2.Location = new System.Drawing.Point(318, 131);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(181, 276);
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(181, 306);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
-            // button1
+            // btnCancelarPartida
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(430, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(70, 70);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancelarPartida.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCancelarPartida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelarPartida.CausesValidation = false;
+            this.btnCancelarPartida.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarPartida.Font = new System.Drawing.Font("Book Antiqua", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelarPartida.ForeColor = System.Drawing.Color.Transparent;
+            this.btnCancelarPartida.Location = new System.Drawing.Point(430, 15);
+            this.btnCancelarPartida.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelarPartida.Name = "btnCancelarPartida";
+            this.btnCancelarPartida.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCancelarPartida.Size = new System.Drawing.Size(70, 70);
+            this.btnCancelarPartida.TabIndex = 2;
+            this.btnCancelarPartida.Text = "X";
+            this.btnCancelarPartida.UseVisualStyleBackColor = false;
+            this.btnCancelarPartida.Click += new System.EventHandler(this.btnCancelarPartida_Click);
             // 
             // lblNombreJ1
             // 
@@ -132,19 +140,30 @@
             this.lblPuntosJ2.TabIndex = 7;
             this.lblPuntosJ2.Text = "0";
             // 
+            // lblGanador
+            // 
+            this.lblGanador.AutoSize = true;
+            this.lblGanador.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGanador.Location = new System.Drawing.Point(137, 9);
+            this.lblGanador.Name = "lblGanador";
+            this.lblGanador.Size = new System.Drawing.Size(112, 28);
+            this.lblGanador.TabIndex = 8;
+            this.lblGanador.Text = "GANADOR:";
+            // 
             // FrmPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Vista.Properties.Resources.paño;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(548, 449);
+            this.ClientSize = new System.Drawing.Size(548, 467);
+            this.Controls.Add(this.lblGanador);
             this.Controls.Add(this.lblPuntosJ2);
             this.Controls.Add(this.lblPuntosJ1);
             this.Controls.Add(this.lblMano);
             this.Controls.Add(this.lblNombreJ2);
             this.Controls.Add(this.lblNombreJ1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancelarPartida);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Name = "FrmPartida";
@@ -159,11 +178,12 @@
 
         private RichTextBox richTextBox1;
         private RichTextBox richTextBox2;
-        private Button button1;
+        private Button btnCancelarPartida;
         private Label lblNombreJ1;
         private Label lblNombreJ2;
         private Label lblMano;
         private Label lblPuntosJ1;
         private Label lblPuntosJ2;
+        private Label lblGanador;
     }
 }

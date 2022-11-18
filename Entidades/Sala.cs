@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.Tracing;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
+using static Entidades.Delegado;
 
 namespace Entidades
 {
@@ -14,10 +15,9 @@ namespace Entidades
         public bool hayGanador;
         private string ganador = string.Empty;
         private int mano;
-        public delegate void delegadoPrueba(string a, string b);
+        Delegado.MostrarJuego DMostrar;
 
-
-        public Sala(delegadoPrueba delegado)
+        public Sala(MostrarJuego DMostrar)
         {
             dados = new List<int>();
             for (int i = 0; i < 5; i++)
@@ -28,7 +28,7 @@ namespace Entidades
             this.jugador1 = Torneo.Participantes[rand.Next(0, 100)];
             this.jugador2 = Torneo.Participantes[rand.Next(0, 100)];
 
-            Task task = Task.Run(() => { this.JugarPartida(jugador1, jugador2, delegado); });
+            Task task = Task.Run(() => { this.JugarPartida(/*jugador1, jugador2,*/ DMostrar); });
 
         }
 
@@ -44,7 +44,7 @@ namespace Entidades
 
         //Metodo jugar partida
 
-        public void JugarPartida(Jugador jugador1, Jugador jugador2, delegadoPrueba delegadoMostrar)
+        public void JugarPartida(/*Jugador jugador1, Jugador jugador2,*/ MostrarJuego DMostrar)
         {
 
             do
@@ -54,16 +54,16 @@ namespace Entidades
                 for (int i = 0; i < 3; i++)
                 {
                     jugador1.JugarMano();
-                    delegadoMostrar.Invoke(MostrarJugadas(jugador1), "");
-                    Thread.Sleep(2000);
+                    DMostrar.Invoke(MostrarJugadas(jugador1), "");
+                    Thread.Sleep(1000);
 
                 }
 
                 for (int i = 0; i < 3; i++)
                 {
                     jugador2.JugarMano();
-                    delegadoMostrar.Invoke("", MostrarJugadas(jugador2));
-                    Thread.Sleep(2000);
+                    DMostrar.Invoke("", MostrarJugadas(jugador2));
+                    Thread.Sleep(1000);
                 }
 
                 hayGanador = (HayGanador(Jugador1) || HayGanador(Jugador2));

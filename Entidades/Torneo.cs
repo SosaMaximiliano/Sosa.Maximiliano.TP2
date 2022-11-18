@@ -12,7 +12,7 @@ namespace Entidades
         static List<Sala> salas;
         static List<Jugador> participantes;
 
-
+        
         static Torneo()
         {
             salas = new List<Sala>();

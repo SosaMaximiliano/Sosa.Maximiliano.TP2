@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Entidades.Delegado;
 
 namespace FrmPrincipal
 {
@@ -17,21 +16,19 @@ namespace FrmPrincipal
     {
         Sala sala;
         public int mano;
-        Ganador DGanador;
-        MostrarJuego DMostrarJuego;
+        Delegado.Ganador DGanador;
+        Delegado.MostrarJuego DMostrarJuego;
 
         public FrmPartida()
         {
             InitializeComponent();
 
             mano = 0;
+            DMostrarJuego = ActualizarDatos;
 
-            sala = new Sala(ActualizarRch);
+            sala = new Sala(DMostrarJuego);
             Torneo.Salas.Add(sala);
 
-            //DELEGADOS
-            //DTirar = sala.JugarPartida;
-            //DMostrarJuego = sala.Jugador1.MostrarJuego;
             DGanador = sala.HayGanador;
 
             lblNombreJ1.Text = sala.Jugador1.Nombre;
@@ -40,9 +37,31 @@ namespace FrmPrincipal
 
 
 
-        public void ActualizarRch(string textoJ1, string textoJ2)
+         void ActualizarDatos(string textoJ1, string textoJ2)
         {
-            //lblMano.Text = $"MANO: {sala.Mano}";
+            if (this.lblMano.InvokeRequired)
+            {
+                this.lblMano.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.lblMano.Text = $"MANO: {sala.Mano}";
+                });
+            }
+
+            if (this.lblPuntosJ1.InvokeRequired)
+            {
+                this.lblPuntosJ1.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.lblPuntosJ1.Text = sala.Jugador1.Puntaje.ToString();
+                });
+            }
+
+            if (this.lblPuntosJ2.InvokeRequired)
+            {
+                this.lblPuntosJ2.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.lblPuntosJ2.Text = sala.Jugador2.Puntaje.ToString();
+                });
+            }
 
             if (this.richTextBox1.InvokeRequired)//Si el control es requerido desde otro hilo...
             {
@@ -53,13 +72,6 @@ namespace FrmPrincipal
                 });
             }
 
-            /*else //Si no fue requerido trabaja sobre el hilo en el que se creó
-            {
-                this.richTextBox1.AppendText(texto);
-            }*/
-
-
-
             if (this.richTextBox2.InvokeRequired)
             {
                 this.richTextBox2.BeginInvoke((MethodInvoker)delegate ()
@@ -68,21 +80,16 @@ namespace FrmPrincipal
                 });
             }
 
-            /* else
-             {
-                 this.richTextBox2.AppendText(texto);
-             }*/
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCancelarPartida_Click(object sender, EventArgs e)
         {
-            //ActualizarRch(ct, $"METODO LLAMADO DESDE EL HILO PRINCIPAL\n");
+            //cancellation.Cancel();
         }
 
         private void FrmPartida_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("La concha de la lora");
             e.Cancel = true;
             this.Hide();
         }

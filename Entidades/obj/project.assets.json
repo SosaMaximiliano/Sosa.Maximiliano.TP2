@@ -2565,19 +2565,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\maxis\\.nuget\\packages\\": {}
+    "C:\\Users\\Max\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+      "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
       "projectName": "Entidades",
-      "projectPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
-      "packagesPath": "C:\\Users\\maxis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxis\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
+      "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+      "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maxis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2624,7 +2624,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

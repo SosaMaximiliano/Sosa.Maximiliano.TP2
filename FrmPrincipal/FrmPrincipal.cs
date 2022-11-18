@@ -15,7 +15,7 @@ namespace FrmPrincipal
             ParticipantesDB jugadoresDB = new ParticipantesDB();
             Torneo.Participantes = jugadoresDB.ObtenerJugadores();
 
-            //dgSalas.DataSource = null;
+            dgSalas.DataSource = null;
             dgSalas.DataSource = Torneo.Salas;
 
 

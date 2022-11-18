@@ -45,19 +45,20 @@
             // dgSalas
             // 
             this.dgSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSalas.Location = new System.Drawing.Point(93, 25);
+            this.dgSalas.Location = new System.Drawing.Point(148, 25);
             this.dgSalas.Name = "dgSalas";
             this.dgSalas.RowTemplate.Height = 25;
-            this.dgSalas.Size = new System.Drawing.Size(574, 371);
+            this.dgSalas.Size = new System.Drawing.Size(413, 371);
             this.dgSalas.TabIndex = 1;
             // 
             // btnIniciarJuego
             // 
-            this.btnIniciarJuego.Location = new System.Drawing.Point(12, 25);
+            this.btnIniciarJuego.BackgroundImage = global::Vista.Properties.Resources.Dice2;
+            this.btnIniciarJuego.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnIniciarJuego.Location = new System.Drawing.Point(32, 25);
             this.btnIniciarJuego.Name = "btnIniciarJuego";
-            this.btnIniciarJuego.Size = new System.Drawing.Size(75, 66);
+            this.btnIniciarJuego.Size = new System.Drawing.Size(75, 75);
             this.btnIniciarJuego.TabIndex = 2;
-            this.btnIniciarJuego.Text = "Iniciar Juego";
             this.btnIniciarJuego.UseVisualStyleBackColor = true;
             this.btnIniciarJuego.Click += new System.EventHandler(this.btnIniciarJuego_Click);
             // 
