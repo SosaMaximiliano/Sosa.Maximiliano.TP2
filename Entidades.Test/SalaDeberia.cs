@@ -31,5 +31,9 @@ namespace Entidades.Test
 
             Assert.AreEqual("Max", Sala.JugadorGanador(jugador1, jugador2));
         }
+
+
+
+        //[ExpectedException(typeof(Exception))]
     }
 }

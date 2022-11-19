@@ -20,23 +20,16 @@ namespace Entidades
             
             try
             {
-                //Guardo la conexion en una variable
-                //Creo un objeto de conexion y le paso la direccion por parametro
-                connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True;Encrypt=False;";
+                connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True; Encrypt = False;";
                 connection = new SqlConnection(connectionString);
 
-                //Puente entre el programa y la DB
                 command = new SqlCommand();
 
-                //Abro la conexion
                 connection.Open();
 
-                //Le asigno el objeto SqlConnection
                 command.Connection = connection;
 
-                //Le digo que va a recibir la query como texto
                 command.CommandType = System.Data.CommandType.Text;
-
 
                 command.CommandText = "SELECT * FROM Participantes";
 
@@ -67,23 +60,16 @@ namespace Entidades
         {
             try
             {
-                //Guardo la conexion en una variable
-                //Creo un objeto de conexion y le paso la direccion por parametro
                 connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True;Encrypt=False;";
                 connection = new SqlConnection(connectionString);
 
-                //Puente entre el programa y la DB
                 command = new SqlCommand();
 
-                //Abro la conexion
                 connection.Open();
 
-                //Le asigno el objeto SqlConnection
                 command.Connection = connection;
 
-                //Le digo que va a recibir la query como texto
                 command.CommandType = System.Data.CommandType.Text;
-
 
                 command.CommandText = $"INSERT INTO Ganadores (Nombre) VALUES (@Jugador)";
                 command.Parameters.AddWithValue("@Jugador", jugador);

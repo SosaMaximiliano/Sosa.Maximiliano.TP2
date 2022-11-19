@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public interface Interface1
+    public interface Interface1<T>
     {
-        //APLICAR INTERFACES
+        public List<T> Leer();
+
+        public void Escribir(string texto);
     }
 }

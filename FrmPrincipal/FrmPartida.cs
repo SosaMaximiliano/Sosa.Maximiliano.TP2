@@ -30,6 +30,7 @@ namespace FrmPrincipal
 
             sala = new Sala(DMostrarJuego);
             sala.IdSala = FrmPrincipal.idFormPartida;
+            idForm = FrmPrincipal.idFormPartida;
             Torneo.Salas.Add(sala);
 
             DGanador = Sala.HayGanador;
@@ -40,7 +41,7 @@ namespace FrmPrincipal
 
 
 
-         public void ActualizarDatos(string textoJ1, string textoJ2)
+        public void ActualizarDatos(string textoJ1, string textoJ2)
         {
             if (this.lblMano.InvokeRequired)
             {
@@ -85,11 +86,15 @@ namespace FrmPrincipal
 
             if (DGanador(sala.Jugador1) || DGanador(sala.Jugador2))
             {
-                this.lblGanador.BeginInvoke((MethodInvoker)delegate ()
+                if (this.lblGanador.InvokeRequired)
                 {
-                    this.lblGanador.Text = $"GANADOR {Sala.JugadorGanador(sala.Jugador1,sala.Jugador2)}";
+                    this.lblGanador.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        this.lblGanador.Text = $"GANADOR {Sala.JugadorGanador(sala.Jugador1, sala.Jugador2)}";
 
-                });
+                    });
+
+                }
             }
 
 
@@ -100,6 +105,8 @@ namespace FrmPrincipal
             sala.cts.Cancel();
 
             this.lblGanador.Text = "PARTIDA CANCELADA";
+
+            sala.Ganador = "PARTIDA CANCELADA";
         }
 
         private void FrmPartida_FormClosing(object sender, FormClosingEventArgs e)
@@ -107,6 +114,8 @@ namespace FrmPrincipal
             e.Cancel = true;
             this.Hide();
         }
+
+
     }
 }
 

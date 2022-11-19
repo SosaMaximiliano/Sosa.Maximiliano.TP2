@@ -16,7 +16,8 @@ namespace Entidades
         public bool hayGanador;
         private string ganador = string.Empty;
         private int mano;
-        Delegado.MostrarJuego DMostrar;
+        //Delegado.MostrarJuego DMostrar;
+
         public CancellationTokenSource cts;
         public CancellationToken ct;
 
@@ -28,8 +29,8 @@ namespace Entidades
                 dados.Add(rand.Next(1, 7));
             }
 
-            cts = new CancellationTokenSource();//1 Instancio el objeto cancellation. Es el emisor de la señal cancel
-            ct = cts.Token;//2 Le asigno el valor de la propiedad Token a la variable cancellationToken. Es el listener
+            cts = new CancellationTokenSource();
+            ct = cts.Token;
 
             this.jugador1 = Torneo.Participantes[rand.Next(0, 100)];
             this.jugador2 = Torneo.Participantes[rand.Next(0, 100)];
@@ -92,7 +93,7 @@ namespace Entidades
 
         public static bool HayGanador(Jugador jugador)
         {
-            return jugador.Puntaje >= 20 ? true : false;
+            return jugador.Puntaje >= 300 ? true : false;
         }
 
         public static string JugadorGanador(Jugador jugador1, Jugador jugador2)
@@ -112,7 +113,7 @@ namespace Entidades
 
         //Metodo mostrar jugadas
 
-        public string MostrarJugadas(Jugador jugador)
+        public static string MostrarJugadas(Jugador jugador)
         {
             StringBuilder jugada = new StringBuilder();
 

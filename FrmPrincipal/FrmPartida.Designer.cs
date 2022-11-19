@@ -168,7 +168,7 @@
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Name = "FrmPartida";
-            this.Text = "Form2";
+            this.Text = "PARTIDA";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPartida_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
