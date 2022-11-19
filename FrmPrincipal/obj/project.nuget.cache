@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0qt7oudvZpccZuCveu3XriP4k5W0fn2QVdz4bXcjllI3ynnFV3Q1jEiz3VkJL+davBu5EqUmX9EioDV4tr3zbw==",
+  "dgSpecHash": "fpGEL0VY164m793VDZ14gQl/ChHnitBsvEr4dESgIoIo6t73mCj8Wws0yg2DlJ8twWHLNCtfz368P+4mmFUNMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj",
+  "projectFilePath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\FrmPrincipal\\Vista.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Max\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Max\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

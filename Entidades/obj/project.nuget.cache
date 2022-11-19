@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nnv7zW7+PDCdwmw5Npb4nsQuJRF0770Cua2b035Fa33AmapzmpcQ2OKnU7PLy8fS233W6lIjpCHAp8KRW1lyEA==",
+  "dgSpecHash": "NOyrHIL/FQzLH+chPp9Fi677OWAFv9jGucoC1mbiL3C4KuYxyVY8rRpQ9o6dYUwplqB9/IX3U6fnZ4oeqQ5QFA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Max\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Max\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

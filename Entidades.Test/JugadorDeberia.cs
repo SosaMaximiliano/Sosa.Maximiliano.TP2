@@ -28,7 +28,7 @@ namespace Entidades.Test
             dados.Add(dado4);
             dados.Add(dado5);
 
-            Jugador jugador = new Jugador("Max", "Payne", 1);
+            Jugador jugador = new Jugador("Max");
 
             //W
             jugador.GuardarDadosParaEscalera(dados);
@@ -59,7 +59,7 @@ namespace Entidades.Test
             dados.Add(dado5);
 
 
-            Jugador jugador = new Jugador("Max", "Payne", 1);
+            Jugador jugador = new Jugador("Max");
 
             //W
             jugador.GuardarDadosParaFullPokerGenerala(dados);
@@ -105,27 +105,11 @@ namespace Entidades.Test
             Assert.AreEqual(true, Jugador.PosibleEscalera(dados));
         }
 
-        [DataRow(6, 4, 6, 6, 2)]
-        //[DataRow(3, 2, 6, 1, 5)]
-        [TestMethod]
-        public void PoderGuardarDados(int dado1, int dado2, int dado3, int dado4, int dado5)
-        {
-            List<int> dados = new List<int>();
+       
 
-            dados.Add(dado1);
-            dados.Add(dado2);
-            dados.Add(dado3);
-            dados.Add(dado4);
-            dados.Add(dado5);
 
-            Jugador jugador = new Jugador("M", "P", 1);
-            jugador.DadosParaFullPokerGenerala.Clear();
 
-            jugador.GuardarDados(dados);
-            int aux = jugador.DadosParaFullPokerGenerala.Count;
 
-            Assert.AreEqual(3, jugador.DadosParaFullPokerGenerala.Count);
-        }
 
     }
 }

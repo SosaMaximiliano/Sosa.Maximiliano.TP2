@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public interface Serializadora
+    public class Serializadora
     {
         //APLICAR
     }

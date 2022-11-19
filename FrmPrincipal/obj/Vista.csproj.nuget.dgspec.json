@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj": {}
+    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\FrmPrincipal\\Vista.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj": {
+    "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\FrmPrincipal\\Vista.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj",
+        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\FrmPrincipal\\Vista.csproj",
         "projectName": "Vista",
-        "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\Vista.csproj",
+        "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\FrmPrincipal\\Vista.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\FrmPrincipal\\obj\\",
+        "outputPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\FrmPrincipal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +89,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Max\\Desktop\\Sosa.Maximiliano.TP2 - copia\\Entidades\\Entidades.csproj"
               }
             }
           }

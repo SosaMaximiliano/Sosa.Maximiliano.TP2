@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using ClassLibrary1;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace FrmPrincipal
         public int mano;
         Delegado.Ganador DGanador;
         Delegado.MostrarJuego DMostrarJuego;
+        public int idForm;
 
         public FrmPartida()
         {
@@ -27,9 +29,10 @@ namespace FrmPrincipal
             DMostrarJuego = ActualizarDatos;
 
             sala = new Sala(DMostrarJuego);
+            sala.IdSala = FrmPrincipal.idFormPartida;
             Torneo.Salas.Add(sala);
 
-            DGanador = sala.HayGanador;
+            DGanador = Sala.HayGanador;
 
             lblNombreJ1.Text = sala.Jugador1.Nombre;
             lblNombreJ2.Text = sala.Jugador2.Nombre;
@@ -37,7 +40,7 @@ namespace FrmPrincipal
 
 
 
-         void ActualizarDatos(string textoJ1, string textoJ2)
+         public void ActualizarDatos(string textoJ1, string textoJ2)
         {
             if (this.lblMano.InvokeRequired)
             {
@@ -63,9 +66,8 @@ namespace FrmPrincipal
                 });
             }
 
-            if (this.richTextBox1.InvokeRequired)//Si el control es requerido desde otro hilo...
+            if (this.richTextBox1.InvokeRequired)
             {
-                //Invoco la referencia del control a traves de un delegado
                 this.richTextBox1.BeginInvoke((MethodInvoker)delegate ()
                 {
                     this.richTextBox1.AppendText(textoJ1);
@@ -77,6 +79,16 @@ namespace FrmPrincipal
                 this.richTextBox2.BeginInvoke((MethodInvoker)delegate ()
                 {
                     this.richTextBox2.AppendText(textoJ2);
+                    this.richTextBox2.ScrollToCaret();
+                });
+            }
+
+            if (DGanador(sala.Jugador1) || DGanador(sala.Jugador2))
+            {
+                this.lblGanador.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.lblGanador.Text = $"GANADOR {Sala.JugadorGanador(sala.Jugador1,sala.Jugador2)}";
+
                 });
             }
 
@@ -85,7 +97,9 @@ namespace FrmPrincipal
 
         private void btnCancelarPartida_Click(object sender, EventArgs e)
         {
-            //cancellation.Cancel();
+            sala.cts.Cancel();
+
+            this.lblGanador.Text = "PARTIDA CANCELADA";
         }
 
         private void FrmPartida_FormClosing(object sender, FormClosingEventArgs e)

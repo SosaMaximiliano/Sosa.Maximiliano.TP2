@@ -58,3 +58,15 @@ C:\Users\Max\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.d
 C:\Users\Max\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\refint\Entidades.dll
 C:\Users\Max\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\Entidades.pdb
 C:\Users\Max\Desktop\Sosa.Maximiliano.TP2\Entidades\obj\Debug\net6.0\ref\Entidades.dll
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\bin\Debug\net6.0\Entidades.deps.json
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\bin\Debug\net6.0\Entidades.dll
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\bin\Debug\net6.0\Entidades.pdb
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfo.cs
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.dll
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\refint\Entidades.dll
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\Entidades.pdb
+C:\Users\Max\Desktop\Sosa.Maximiliano.TP2 - copia\Entidades\obj\Debug\net6.0\ref\Entidades.dll

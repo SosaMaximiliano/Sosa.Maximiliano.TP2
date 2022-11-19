@@ -42,7 +42,7 @@
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBox1.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox1.Location = new System.Drawing.Point(31, 131);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -53,7 +53,7 @@
             // richTextBox2
             // 
             this.richTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBox2.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox2.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox2.Location = new System.Drawing.Point(318, 131);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
@@ -143,18 +143,19 @@
             // lblGanador
             // 
             this.lblGanador.AutoSize = true;
-            this.lblGanador.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblGanador.Location = new System.Drawing.Point(137, 9);
+            this.lblGanador.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblGanador.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGanador.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblGanador.Location = new System.Drawing.Point(31, 15);
             this.lblGanador.Name = "lblGanador";
-            this.lblGanador.Size = new System.Drawing.Size(112, 28);
+            this.lblGanador.Size = new System.Drawing.Size(0, 65);
             this.lblGanador.TabIndex = 8;
-            this.lblGanador.Text = "GANADOR:";
             // 
             // FrmPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Vista.Properties.Resources.paño;
+            this.BackgroundImage = global::Vista.Properties.Resources.pañoAzul;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(548, 467);
             this.Controls.Add(this.lblGanador);
