@@ -10,28 +10,26 @@ namespace Entidades
     public class Jugador
     {
         private string nombre;
-        //private string apellido;
+        private string apellido;
         private int puntaje;
-        private List<int> dadosParaEscalera;
-        private List<int> dadosParaFullPokerGenerala;
+        private string especie;
+        private int id;
         public List<int> dadosJugador;
-        public bool vamosPorLaEscalera;
-        public bool vamosPorPFG;
 
         public string Nombre { get => nombre; }
+        public string Apellido { get => apellido; }
+        public string Especie { get => especie; }
         public int Puntaje { get => puntaje; set => puntaje = value; }
-        public List<int> DadosParaEscalera { get => dadosParaEscalera; set => dadosParaEscalera = value; }
-        public List<int> DadosParaFullPokerGenerala { get => dadosParaFullPokerGenerala; set => dadosParaFullPokerGenerala = value; }
+        public int Id { get => id; }
 
-        public Jugador(string nombre)
+        public Jugador(int id, string nombre, string apellido, string especie)
         {
             this.nombre = nombre;
+            this.apellido = apellido;
+            this.especie = especie;
+            this.id = id;
             puntaje = 0;
-            dadosParaFullPokerGenerala = new List<int>();
-            dadosParaEscalera = new List<int>();
             this.dadosJugador = new List<int>();
-            this.vamosPorLaEscalera = false;
-            this.vamosPorPFG = false;
         }
 
         //CUANDO TERMINE, ARREGLAR PARA QUE MEZCLE CON LOS DADOS QUE HAYA
@@ -195,16 +193,16 @@ namespace Entidades
             {
                 if (carasDelDado[i] == 2)
                 {
-                    DadosParaFullPokerGenerala.Add(i + 1);
-                    DadosParaFullPokerGenerala.Add(i + 1);
+                    //DadosParaFullPokerGenerala.Add(i + 1);
+                    //DadosParaFullPokerGenerala.Add(i + 1);
 
                 }
 
                 if (carasDelDado[i] == 3)
                 {
-                    DadosParaFullPokerGenerala.Add(i + 1);
-                    DadosParaFullPokerGenerala.Add(i + 1);
-                    DadosParaFullPokerGenerala.Add(i + 1);
+                    //DadosParaFullPokerGenerala.Add(i + 1);
+                    //DadosParaFullPokerGenerala.Add(i + 1);
+                    //DadosParaFullPokerGenerala.Add(i + 1);
                 }
 
             }
@@ -284,98 +282,6 @@ namespace Entidades
             }
 
             return contadorAux >= 3 ? true : false;
-        }
-
-
-        //SI SE JUEGAN MENOS DE CINCO DADOS (ENTRE UNO Y TRES REALMENTE. PARA QUE TENGA LOGICA DEBERIA TENER AL MENOS DOS GUARDADOS)
-        public void CompletarJuego(List<int> dados)
-        {
-            List<int> listaAux = new List<int>();
-            //SI SE JUEGA POR PFG:
-            /*
-             * Recorro la lista de los dados jugados.
-             * Recorro la lista de los dados guardados.
-             * Si un dado se repite lo guardo en la lista auxiliar.
-             */
-            if (vamosPorPFG)
-            {
-                listaAux.Clear();
-                listaAux = DadosParaFullPokerGenerala.ToList();
-
-                foreach (int dadoGuardado in DadosParaFullPokerGenerala)
-                {
-                    foreach (int dado in dados)
-                    {
-                        if (dadoGuardado == dado)
-                        {
-                            listaAux.Add(dado);
-                            break;
-                        }
-                    }
-                }
-
-                DadosParaFullPokerGenerala.Clear();
-                DadosParaFullPokerGenerala = listaAux.ToList();
-
-            }
-
-            //SI SE JUEGA POR LA ESCALERA:
-            if (vamosPorLaEscalera)
-            {
-                listaAux = DadosParaEscalera.ToList();
-
-                foreach (int dado in dados)
-                {
-                    //REVISAR ACA:
-                    //SI TENGO GUARDADO 2,3,4 Y ME SALE 1 y 5 PODRIA FUNCIONAR
-                    //PERO SI TENGO 2,3,4 Y ME SALE 5 Y 6 SOLO ME VA A GUARDAR EL 5
-                    if (dado == dadosParaEscalera[0] - 1 || dado == dadosParaEscalera[dadosParaEscalera.Count - 1] + 1)
-                    {
-                        listaAux.Add(dado);
-                        break;
-                    }
-                }
-
-                DadosParaEscalera.Clear();
-                DadosParaEscalera = listaAux.ToList();
-            }
-
-        }
-
-
-        //PARA QUE FUNCIONE TIENEN QUE HABER AL MENOS DOS DADOS PARA QUE COMPARE
-        public void GuardarDadosParaEscalera(List<int> dados)
-        {
-
-            List<int> aux = new List<int>();
-            List<int> ordenados = dados.OrderBy(dado => dado).ToList();
-
-            for (int i = 0; i < ordenados.Count - 1; i++)
-            {
-                if (EsConsecutivo(ordenados[i], ordenados[i + 1]) == 0) //SI SON IGUALES
-                {
-                    ordenados.RemoveAt(i);
-                }
-
-            }
-
-            for (int i = 0; i < ordenados.Count - 1; i++)
-            {
-                if (EsConsecutivo(ordenados[i], ordenados[i + 1]) == 1) //SI b ES CORRELATIVO DE a
-                {
-                    aux.Add(ordenados[i]);
-                }
-            }
-
-            //HAY UN DADO QUE NO SE GUARDA CON EL METODO PERO QUE EXISTE, ASÍ QUE LO GENERO A MANOPLA
-
-            if (aux.Count > 0)
-            {
-                aux.Insert(aux.Count, aux[aux.Count - 1] + 1);
-            }
-
-            DadosParaEscalera = aux;
-
         }
 
 

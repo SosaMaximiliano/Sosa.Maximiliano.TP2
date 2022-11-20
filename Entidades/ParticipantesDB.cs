@@ -9,68 +9,41 @@ namespace Entidades
 {
     public class ParticipantesDB
     {
+
+        string connectionString;
+        SqlConnection connection;
+        SqlCommand command;
+
         public List<Jugador> ObtenerJugadores()
         {
             List<Jugador> participantes = new List<Jugador>();
-<<<<<<< HEAD
             
             try
-=======
-
-            //Guardo la conexion en una variable
-            //Creo un objeto de conexion y le paso la direccion por parametro
-            string connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True;Encrypt=False;";
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            //Puente entre el programa y la DB
-            SqlCommand command = new SqlCommand();
-
-            //Abro la conexion
-            connection.Open();
-
-            //Le asigno el objeto SqlConnection
-            command.Connection = connection;
-
-            //Le digo que va a recibir la query como texto
-            command.CommandType = System.Data.CommandType.Text;
-
-
-            command.CommandText = "SELECT * FROM Participantes";
-
-            SqlDataReader reader = command.ExecuteReader();
-
-
-            while (reader.Read())
->>>>>>> e598e714c54ef100a41f0caddb56c257a4cb988d
             {
-                //Guardo la conexion en una variable
-                //Creo un objeto de conexion y le paso la direccion por parametro
-                string connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True;Encrypt=False;";
-                SqlConnection connection = new SqlConnection(connectionString);
+                connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True; Encrypt = False;";
+                connection = new SqlConnection(connectionString);
 
-                //Puente entre el programa y la DB
-                SqlCommand command = new SqlCommand();
+                command = new SqlCommand();
 
-                //Abro la conexion
                 connection.Open();
 
-                //Le asigno el objeto SqlConnection
                 command.Connection = connection;
 
-                //Le digo que va a recibir la query como texto
                 command.CommandType = System.Data.CommandType.Text;
 
-
-                command.CommandText = "SELECT * FROM Participantes2";
+                command.CommandText = "SELECT * FROM Participantes3";
 
                 SqlDataReader reader = command.ExecuteReader();
 
 
                 while (reader.Read())
                 {
-                    string nombre = reader.GetString(0);
+                    int id = reader.GetInt32(0);
+                    string nombre = reader.GetString(1);
+                    string apellido = reader.GetString(2);
+                    string especie = reader.GetString(3);
 
-                    participantes.Add(new Jugador(nombre));
+                    participantes.Add(new Jugador(id,nombre,apellido,especie));
                 }
 
                 if (connection.State == System.Data.ConnectionState.Open)
@@ -84,6 +57,38 @@ namespace Entidades
                 throw;
             }
             return participantes;
+        }
+
+        public void GuardarDatos(string jugador)
+        {
+            try
+            {
+                connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True;Encrypt=False;";
+                connection = new SqlConnection(connectionString);
+
+                command = new SqlCommand();
+
+                connection.Open();
+
+                command.Connection = connection;
+
+                command.CommandType = System.Data.CommandType.Text;
+
+                command.CommandText = $"INSERT INTO Ganadores (Nombre) VALUES (@Jugador)";
+                command.Parameters.AddWithValue("@Jugador", jugador);
+
+                command.ExecuteNonQuery();
+
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

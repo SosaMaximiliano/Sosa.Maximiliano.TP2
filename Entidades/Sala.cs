@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Tracing;
+﻿using ClassLibrary1;
+using System.Diagnostics.Tracing;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using static Entidades.Delegado;
@@ -7,7 +8,7 @@ namespace Entidades
 {
     public class Sala
     {
-        private int numeroSala;
+        private int idSala;
         private List<int> dados;
         static Random rand = new Random();
         Jugador jugador1;
@@ -15,7 +16,11 @@ namespace Entidades
         public bool hayGanador;
         private string ganador = string.Empty;
         private int mano;
-        Delegado.MostrarJuego DMostrar;
+
+        public event Action<string> partidaTerminada;
+
+        public CancellationTokenSource cts;
+        public CancellationToken ct;
 
         public Sala(MostrarJuego DMostrar)
         {
@@ -25,15 +30,18 @@ namespace Entidades
                 dados.Add(rand.Next(1, 7));
             }
 
+            cts = new CancellationTokenSource();
+            ct = cts.Token;
+
             this.jugador1 = Torneo.Participantes[rand.Next(0, 100)];
             this.jugador2 = Torneo.Participantes[rand.Next(0, 100)];
 
-            Task task = Task.Run(() => { this.JugarPartida(/*jugador1, jugador2,*/ DMostrar); });
+            Task task = Task.Run(() => { this.JugarPartida(DMostrar, ct); });
 
         }
 
         public List<int> Dados { get => dados; set => dados = value; }
-        public int NumeroSala { get => numeroSala; }
+        public int IdSala { get => idSala; set => idSala = value; }
         public string NombreJugador1 { get => Jugador1.Nombre; }
         public string NombreJugador2 { get => Jugador2.Nombre; }
         public string Ganador { get => ganador; set => ganador = value; }
@@ -44,7 +52,7 @@ namespace Entidades
 
         //Metodo jugar partida
 
-        public void JugarPartida(/*Jugador jugador1, Jugador jugador2,*/ MostrarJuego DMostrar)
+        public void JugarPartida(MostrarJuego DMostrar, CancellationToken ct)
         {
 
             do
@@ -67,54 +75,108 @@ namespace Entidades
                 }
 
                 hayGanador = (HayGanador(Jugador1) || HayGanador(Jugador2));
-            } while (!hayGanador);
+            } while (!hayGanador && !ct.IsCancellationRequested);
 
-        }
-
-
-        //Metodo hay ganador
-
-        public bool HayGanador(Jugador jugador)
-        {
-            return jugador.Puntaje >= 20 ? true : false;
-        }
-
-        public string JugadorGanador()
-        {
-            if (HayGanador(this.Jugador1))
+            if (ct.IsCancellationRequested)
             {
-                return $"GANADOR {this.Jugador1.Nombre}";
+                partidaTerminada?.Invoke("PARTIDA CANCELADA");
             }
 
-            if (HayGanador(this.Jugador2))
+            else if (hayGanador)
             {
-                return $"GANADOR {this.Jugador2.Nombre}";
+                Ganador = JugadorGanador(jugador1,jugador2);
+
+
+                /*//Guardo en BD
+                ParticipantesDB pDB = new ParticipantesDB();
+                pDB.GuardarDatos(Ganador);
+
+                //Guardo en archivo
+                Archivo.Escribir(Ganador,"Listado de ganadores");*/
+
+                SerializadoraJSON<Jugador> json = new SerializadoraJSON<Jugador>();
+                json.Escribir(RetornarJugadorGanador(jugador1, jugador2), "Ganadores");
+
+            }
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <returns>true si hay ganador</returns>
+        public static bool HayGanador(Jugador jugador)
+        {
+            return jugador.Puntaje >= 30 ? true : false;
+        }
+
+        /// <summary>
+        /// Si hay un ganador retorna el nombre
+        /// </summary>
+        /// <param name="jugador1"></param>
+        /// <param name="jugador2"></param>
+        /// <returns></returns>
+        public static string JugadorGanador(Jugador jugador1, Jugador jugador2)
+        {
+            if (HayGanador(jugador1))
+            {
+                return jugador1.Nombre;
+            }
+
+            if (HayGanador(jugador2))
+            {
+                return jugador2.Nombre;
             }
 
             return string.Empty;
         }
 
-        //Metodo mostrar jugadas
+        /// <summary>
+        /// Si hay ganador devuelve el objeto
+        /// </summary>
+        /// <param name="jugador1"></param>
+        /// <param name="jugador2"></param>
+        /// <returns></returns>
+        public static Jugador RetornarJugadorGanador(Jugador jugador1, Jugador jugador2)
+        {
+            if (HayGanador(jugador1))
+            {
+                return jugador1;
+            }
 
-        public string MostrarJugadas(Jugador jugador)
+            if (HayGanador(jugador2))
+            {
+                return jugador2;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Recibe un jugador y muestra las jugadas
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <returns>string con las jugadas</returns>
+        public static string MostrarJugadas(Jugador jugador)
         {
             StringBuilder jugada = new StringBuilder();
-
-            //jugada.AppendLine(jugador.Nombre);
 
             jugada.AppendLine("DADOS:");
 
             jugador.dadosJugador.ForEach(dado => jugada.Append($"{dado} "));
 
-            jugada.AppendLine("");
-
-            jugada.AppendLine(jugador.BuscarJuego(jugador.dadosJugador));
+            jugada.AppendLine($"\n{jugador.BuscarJuego(jugador.dadosJugador)}");
 
             jugada.AppendLine($"PUNTAJE: {jugador.Puntaje}");
 
-            jugada.AppendLine("\n");
+            jugada.AppendLine();
 
             return jugada.ToString();
         }
+
+
+
     }
 }
