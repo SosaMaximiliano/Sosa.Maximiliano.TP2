@@ -16,6 +16,9 @@ namespace Entidades
         public bool hayGanador;
         private string ganador = string.Empty;
         private int mano;
+
+        public event Action<string> partidaTerminada;
+
         //Delegado.MostrarJuego DMostrar;
 
         public CancellationTokenSource cts;
@@ -76,14 +79,26 @@ namespace Entidades
                 hayGanador = (HayGanador(Jugador1) || HayGanador(Jugador2));
             } while (!hayGanador && !ct.IsCancellationRequested);
 
-            if (hayGanador)
+            if (ct.IsCancellationRequested)
+            {
+                partidaTerminada?.Invoke("PARTIDA CANCELADA");
+            }
+
+            else if (hayGanador)
             {
                 Ganador = JugadorGanador(jugador1,jugador2);
-                ParticipantesDB pDB = new ParticipantesDB();
 
+
+                /*//Guardo en BD
+                ParticipantesDB pDB = new ParticipantesDB();
                 pDB.GuardarDatos(Ganador);
 
-                Archivo.Escribir(Ganador,"Listado de ganadores");
+                //Guardo en archivo
+                Archivo.Escribir(Ganador,"Listado de ganadores");*/
+
+                SerializadoraJSON<Jugador> json = new SerializadoraJSON<Jugador>();
+                json.Escribir(RetornarJugadorGanador(jugador1, jugador2), "Ganadores");
+
             }
 
         }
@@ -109,6 +124,21 @@ namespace Entidades
             }
 
             return string.Empty;
+        }
+
+        public static Jugador RetornarJugadorGanador(Jugador jugador1, Jugador jugador2)
+        {
+            if (HayGanador(jugador1))
+            {
+                return jugador1;
+            }
+
+            if (HayGanador(jugador2))
+            {
+                return jugador2;
+            }
+
+            return null;
         }
 
         //Metodo mostrar jugadas
