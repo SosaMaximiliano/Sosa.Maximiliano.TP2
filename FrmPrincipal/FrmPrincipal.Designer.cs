@@ -201,6 +201,7 @@
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TORNEO DE GENERALA";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.salaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalas)).EndInit();

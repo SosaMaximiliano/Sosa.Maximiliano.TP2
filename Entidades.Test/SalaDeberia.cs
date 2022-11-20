@@ -14,7 +14,7 @@ namespace Entidades.Test
         [TestMethod]
         public void ValidarGanador()
         {
-            Jugador jugador = new Jugador("Max");
+            Jugador jugador = new Jugador(515,"Max", "Payne","Churrasco");
 
             jugador.Puntaje = 100;
 
@@ -24,8 +24,8 @@ namespace Entidades.Test
         [TestMethod]
         public void NombrarGanador() 
         {
-            Jugador jugador1 = new Jugador("Max");
-            Jugador jugador2 = new Jugador("Kali");
+            Jugador jugador1 = new Jugador(515,"Max", "Payne","Churrasco");
+            Jugador jugador2 = new Jugador(666,"Kali","Kat","Pantera");
 
             jugador1.Puntaje = 100;
 

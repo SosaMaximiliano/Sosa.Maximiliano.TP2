@@ -87,12 +87,12 @@ namespace Entidades
                 Ganador = JugadorGanador(jugador1,jugador2);
 
 
-                /*//Guardo en BD
+                //Guardo en BD
                 ParticipantesDB pDB = new ParticipantesDB();
-                pDB.GuardarDatos(Ganador);
+                pDB.GuardarDatos(RetornarJugadorGanador(jugador1, jugador2));
 
                 //Guardo en archivo
-                Archivo.Escribir(Ganador,"Listado de ganadores");*/
+                Archivo.Escribir(Ganador, "Listado de ganadores");
 
                 SerializadoraJSON<Jugador> json = new SerializadoraJSON<Jugador>();
                 json.Escribir(RetornarJugadorGanador(jugador1, jugador2), "Ganadores");
@@ -109,7 +109,7 @@ namespace Entidades
         /// <returns>true si hay ganador</returns>
         public static bool HayGanador(Jugador jugador)
         {
-            return jugador.Puntaje >= 30 ? true : false;
+            return jugador.Puntaje >= 100 ? true : false;
         }
 
         /// <summary>

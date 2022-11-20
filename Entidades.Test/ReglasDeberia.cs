@@ -10,7 +10,6 @@ namespace Entidades.Test
         [TestMethod]
         public void ValidarEscaleraMenor(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
-            //G
             List<int> dados = new List<int>();
 
             dados.Add(dado1);
@@ -20,9 +19,7 @@ namespace Entidades.Test
             dados.Add(dado5);
 
             bool resultadoEsperado = true;
-            //W
             bool resultado = Reglas.EscaleraMenor(dados);
-            //T
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
@@ -32,7 +29,6 @@ namespace Entidades.Test
         [TestMethod]
         public void ValidarEscaleraMayor(int dado1, int dado2, int dado3, int dado4, int dado5)
         {
-            //G
             List<int> dados = new List<int>();
 
             dados.Add(dado1);
@@ -42,9 +38,7 @@ namespace Entidades.Test
             dados.Add(dado5);
 
             bool resultadoEsperado = true;
-            //W
             bool resultado = Reglas.EscaleraMayor(dados);
-            //T
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 

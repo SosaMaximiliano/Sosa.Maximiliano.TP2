@@ -32,7 +32,7 @@ namespace Entidades
 
                 try
                 {
-                    File.AppendAllText(rutaCompleta, objetoJson);
+                    File.WriteAllText(rutaCompleta, objetoJson);
 
                 }
                 catch (Exception ex)
@@ -58,7 +58,8 @@ namespace Entidades
 
         public T Leer(string archivo)
         {
-            T? datos = default;
+            T datos = default;
+
             string rutaCompleta = ruta + @"/" + archivo + ".json";
 
             if (!Directory.Exists(ruta))

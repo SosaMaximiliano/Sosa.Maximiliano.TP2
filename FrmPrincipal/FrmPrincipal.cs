@@ -76,5 +76,13 @@ namespace FrmPrincipal
         {
             listaPartidas.Add(new FrmPartida());
         }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //ISerializadora<Jugador> sjson = new SerializadoraJSON<Jugador>();
+            //ParticipantesDB pdb = new ParticipantesDB();
+
+            //pdb.GuardarDatos(sjson.Leer("Ganadores"));
+        }
     }
 }

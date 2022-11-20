@@ -17,7 +17,7 @@ namespace Entidades
         public List<Jugador> ObtenerJugadores()
         {
             List<Jugador> participantes = new List<Jugador>();
-            
+
             try
             {
                 connectionString = "Server = .; Database = SegundoTP; Trusted_Connection = True; Encrypt = False;";
@@ -43,7 +43,7 @@ namespace Entidades
                     string apellido = reader.GetString(2);
                     string especie = reader.GetString(3);
 
-                    participantes.Add(new Jugador(id,nombre,apellido,especie));
+                    participantes.Add(new Jugador(id, nombre, apellido, especie));
                 }
 
                 if (connection.State == System.Data.ConnectionState.Open)
@@ -59,7 +59,7 @@ namespace Entidades
             return participantes;
         }
 
-        public void GuardarDatos(string jugador)
+        public void GuardarDatos(Jugador jugador)
         {
             try
             {
@@ -74,8 +74,10 @@ namespace Entidades
 
                 command.CommandType = System.Data.CommandType.Text;
 
-                command.CommandText = $"INSERT INTO Ganadores (Nombre) VALUES (@Jugador)";
-                command.Parameters.AddWithValue("@Jugador", jugador);
+                command.CommandText = $"INSERT INTO Ganadores (Nombre, Apellido,Especie) VALUES (@Nombre,@Apellido,@Especie)";
+                command.Parameters.AddWithValue("@Nombre", jugador.Nombre);
+                command.Parameters.AddWithValue("@Apellido", jugador.Apellido);
+                command.Parameters.AddWithValue("@Especie", jugador.Especie);
 
                 command.ExecuteNonQuery();
 
