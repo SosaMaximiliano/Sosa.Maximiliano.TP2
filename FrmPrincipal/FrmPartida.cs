@@ -30,6 +30,7 @@ namespace FrmPrincipal
             DMostrarJuego = ActualizarDatos;
 
             sala = new Sala(DMostrarJuego);
+
             sala.IdSala = FrmPrincipal.idFormPartida;
             idForm = FrmPrincipal.idFormPartida;
             Torneo.Salas.Add(sala);
